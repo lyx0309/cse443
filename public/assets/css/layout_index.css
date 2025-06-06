@@ -1,0 +1,429 @@
+option:first-child {
+    color: #fff;
+}
+
+.select-one option {    
+   color: #000;
+}
+
+optgroup {
+    font-weight: 700;
+    color: #000;
+}
+
+
+
+.blink {
+    -webkit-animation: blink .75s linear infinite;
+    -moz-animation: blink .75s linear infinite;
+    -ms-animation: blink .75s linear infinite;
+    -o-animation: blink .75s linear infinite;
+    animation: blink .75s linear infinite;
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    50.01% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    50.01% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-ms-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    50.01% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    50.01% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    50.01% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* @end */
+/* @Image */
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pictureUl {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 50vh;
+}
+
+.pictureLi {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-transition: -webkit-box-flex 500ms ease-out;
+    -webkit-transition: -webkit-flex 500ms ease-out;
+    transition: -webkit-box-flex 500ms ease-out;
+    transition: -ms-flex 500ms ease-out;
+    transition: flex 500ms ease-out;
+    padding: 10px;
+    -webkit-box-shadow: -5px 3px 14px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -5px 3px 14px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: -5px 3px 14px -3px rgba(0, 0, 0, 0.75);
+  }
+
+
+.pictureLi:nth-child(1) {
+    background: url("../img/newsroom.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;	
+}
+
+.pictureLi:nth-child(2) {
+    background: url("../img/ebook.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+/*.pictureLi:nth-child(3) {
+    background: url("assets/img/shop.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+*/
+
+.pictureLi:nth-child(3) {
+    background: url("../img/photos_request.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;	
+}
+
+.pictureLi:nth-child(5) {
+    background: url("../sample_pic/travel5.jpg");
+}
+
+.pictureLi:hover {
+    -webkit-box-flex: 2;
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+}
+/* @end */
+/* @FastBooking */
+
+.btnOverlay {
+    position: fixed;
+    z-index: 899;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-color: transparent;
+}
+
+#myDiv.fullscreen {
+    z-index: 999999;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(42, 44, 45, 1);
+    padding: 80px;
+}
+
+
+
+/* @end */
+
+.slidingDiv {
+    height:0px;
+    background-color: transparent;
+    padding:0px;
+    margin-top:0px;
+    transition: width 2s;
+    transition-timing-function: ease-in-out;
+    /*border-bottom:5px solid #3399FF;*/
+}
+
+.show_hide {
+    display:none;
+}
+
+#oneWay:hover{
+    background-color: #5bc0de !important;
+    color:#fff !important; 
+
+}
+
+#return:hover{
+    background-color: #5bc0de !important;
+    color:#fff !important; 
+}
+
+#datepicker.select-test {
+    position: relative;
+    width: 100%;
+    padding: 0 7px;
+    font-family: "Raleway", sans-serif;
+    color: #ffffff;
+    font-weight: 400;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    margin-bottom: 15px;
+    float: left;
+    height: 54px;
+}
+
+
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.footer-text{
+	color:white !important;
+}
+
+.footer-content{
+	color:white !important;
+}
+
+a:focus, a:hover {
+   color: #fff; 
+
+}
+
+/* searching dropdown style */
+
+.dropdown-menu li{
+    width:100% !important;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 100%;
+    background-color: transparent;
+}
+
+.bootstrap-select > .dropdown-toggle.bs-placeholder, .bootstrap-select > .dropdown-toggle.bs-placeholder:hover, .bootstrap-select > .dropdown-toggle.bs-placeholder:focus, .bootstrap-select > .dropdown-toggle.bs-placeholder:active {
+    background-color: transparent;
+    color: #fff;
+    font-family: Neosans Light;
+    border-radius:0;
+}
+
+.bootstrap-select > .dropdown-toggle {
+    background-color: transparent;
+    color: #fff;
+    font-family: Neosans Light;
+    border-radius:0;
+}
+
+.dropup .dropdown-menu, .navbar-fixed-bottom .dropdown .dropdown-menu {
+    bottom: unset;
+}
+
+/* searching dropdown style end */
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .modal-body{
+      height: 700px !important;
+    }
+  }
+  
+  .mobileShow {display: none; color: #fff; font-family: Neosans Light; font-size: 25px;} 
+
+  /* Smartphone Portrait and Landscape */ 
+  @media only screen 
+    and (min-device-width : 320px) 
+    and (max-device-width : 480px){ 
+      .mobileShow {display: inline;}
+  }  
+  
+ /* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  /*width: 33.33%;*/
+  width: 25%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+
+.feature {
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  margin-bottom: 6em;
+}
+
+.feature:last-child {
+  margin-bottom: 2em;
+}
+
+.feature.left {
+  -moz-flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.feature.right {
+  -moz-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.feature .image {
+  width: 48%;
+}
+
+.feature .image img {
+  max-width: 100%;
+}
+
+.feature .content {
+  padding: 2em 3em 0.1em 3em;
+  width: 100%;
+  font-family: Century Gothic;
+}
+
+.feature .content p{
+
+  font-family: Century Gothic;
+  font-size: 18px;
+}
+
+.feature .content a{
+
+  font-family: Century Gothic;
+  font-size: 12px;
+}
+
+@media screen and (max-width: 1280px) {
+
+  .feature {
+    margin-bottom: 4em;
+  }
+
+  .feature .content {
+    padding: 1em 2em 0.1em 2em;
+  }
+
+}
+
+@media screen and (max-width: 980px) {
+
+  .feature.left, .feature.right {
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .feature .image {
+    width: 100%;
+  }
+
+  .feature .image img {
+    width: 100%;
+  }
+
+  .feature .content {
+    padding: 2em 2em 0.1em 2em;
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 736px) {
+
+  .feature {
+    margin-bottom: 2em;
+  }
+
+  .feature .content {
+    padding: 2em 1em 0.1em 1em;
+  }
+
+}
+
+.feature {
+  background-color: rgba(144, 144, 144, 0.075);
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .modal-body{
+      height: 700px !important;
+    }
+  }

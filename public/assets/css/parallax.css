@@ -1,0 +1,113 @@
+
+.rocks_1 {
+	position: absolute;
+	bottom: -5px;
+	height: 315px;
+	width: 1920px;
+	background: url(../img/parallax/rocks_1.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	background-size: contain;
+	animation: translateX 100s infinite linear both;
+}
+.rocks_2 {
+	position: absolute;
+	bottom: -60px;
+	height: 315px;
+	width: 1920px;
+	background: url(../img/parallax/rocks_2.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	background-size: contain;
+	animation: translateX 30s infinite linear both;
+}
+.rails {
+	position: absolute;
+	bottom: -110px;
+	height: 315px;
+	width: 1920px;
+	background: url(../img/parallax/rails.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	background-size: contain;
+	animation: translateX 5s infinite linear both;
+}
+.train {
+	position: absolute;
+	bottom: -105px;
+	height: 315px;
+	width: 1500px;
+	right: -200px;
+	background: url(../img/parallax/train.png);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: contain;
+}
+.train_2 {
+	position: absolute;
+	bottom: -105px;
+	height: 315px;
+	width: 1500px;
+	left: 0px;
+	background: url(../img/parallax/train_2.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	background-size: contain;
+	animation: intercity 30s;
+    animation-iteration-count:infinite;
+}
+@keyframes intercity {
+  from {left: -1000px;}
+  to {left: 2000px;}
+}
+.train_3 {
+	position: absolute;
+	bottom: -105px;
+	height: 315px;
+	width: 1500px;
+	left: 0px;
+	background: url(../img/parallax/train_3.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	background-size: contain;
+	animation: komuter 60s;
+    animation-iteration-count:infinite;
+}
+@keyframes komuter {
+  from {left: -4000px;}
+  to {left: 3000px;}
+}
+.ground {
+  position: absolute;
+  width: 1920px;
+  height: 98px;
+  bottom: 0px;
+  background: #1b3703;
+}
+.lights {
+	position: absolute;
+	bottom: -39px;
+	height: 315px;
+	width: 1920px;
+	background: url(../img/parallax/lights.png);
+	background-repeat: repeat-x;
+	background-position: top center;
+	background-size: contain;
+	animation: translateX 4s infinite linear both;
+}
+.sun {
+	position: absolute;
+	top: 2%;
+	height: 315px;
+	left: 80px;
+	width: 120px;
+	background: url(../img/parallax/sun.png);
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: contain;
+}
+
+@keyframes translateX {
+	0% {background-position: 0px 0px;}
+	100% {background-position:  1920px 0px;}
+}

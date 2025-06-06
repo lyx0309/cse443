@@ -1,43 +1,1274 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html lang="en" class=" js no-touch"><head>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+	<meta charset="UTF-8">
+	<meta content="IE=edge,chrome=1,firefox=1" http-equiv="X-UA-Compatible">
+	<meta name="description" content="KTMB - Malaysia Largest Railway Company. Book all the train tickets online including KTM train, ETS train, Intercity &amp; more though our online ticketing platform.  Buy ticket online!">
+	<meta name="keywords" content="Keretapi Tanah Melayu Berhad, ETS, KTMB, KTM, Komuter, Intercity, KTM Komuter, Freight Oline">
+	<meta name="author" content="Keretapi Tanah Melayu Berhad">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>KTMB Keretapi Tanah Melayu Berhad Official Web Portal</title>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+	<!--styles files-->
+	<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/css/content-style.css" rel="stylesheet">
+	<link href="assets/js/jqwidgets/styles/jqx.base.css" rel="stylesheet">
+	<link href="assets/js/animate/animate.css" rel="stylesheet">
+	<link href="assets/js/select2/select2.min.css" rel="stylesheet">
+	<link href="assets/css/slick.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
+	<link href="assets/css/layout_index.css" rel="stylesheet">
+	<link href="assets/css/font_css.css" rel="stylesheet">
+	<link href="assets/css/parallax.css" rel="stylesheet">
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
-</html>
+
+	<!--favicon-->
+	<link rel="icon" href="favicon.ico">
+	<link rel="canonical" href="https://www.ktmb.com.my/">
+	<link rel="stylesheet" type="text/css" media="all" href="webslidemenu/css/color-theme.css">
+	<link rel="stylesheet" type="text/css" media="all" href="webslidemenu/css/webslidemenu.css">
+
+	<link rel="stylesheet" href="assets/default-temp/css/templatemo-style2.css">
+	    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+
+	<style>
+		div.transbox {
+			margin: 10px;
+			background-color: #ffffff;
+			opacity: 0.6;
+		}
+
+		div.transbox p {
+			margin: 5%;
+			font-weight: bold;
+			color: #000000;
+		}
+
+		#banner_wrapper {
+			width: 100%;
+			overflow: hidden;
+		}
+
+		#banner_bg_container {
+			width: 100%;
+			margin: 0 auto;
+		}
+
+		.banner_bg-img {
+			width: 100%;
+		}
+
+		#color_h2 {
+			color: #000;
+			font-family: Neosans Light;
+			font-size: 180%;
+		}
+	</style>
+
+	<!--searching dropdown css-->
+	<link href="assets/js/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script src="https://connect.facebook.net/en_US/sdk.js?hash=34f8bd519dac65d5a1eb7dc5546f92cf" async="" crossorigin="anonymous"></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-112478451-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'UA-112478451-1');
+	</script>
+	<!--end here-->
+<script src="https://platform.twitter.com/widgets.js"></script><script src="https://connect.facebook.net/ms_MY/sdk.js#xfbml=1&amp;version=v8.0"></script><script src="https://www.ktmb.com.my/assets/js/chat-popup.js"></script><style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{0%{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+
+.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{0%{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+
+.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://connect.facebook.net/rsrc.php/v4/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://connect.facebook.net/rsrc.php/v4/ya/r/3rhSv5V8j3o.gif) #fff no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100%;position:absolute;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://connect.facebook.net/rsrc.php/v4/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://connect.facebook.net/rsrc.php/v4/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}
+</style><script charset="utf-8" src="https://platform.twitter.com/js/timeline.e108540dddc96e4b707f5cf259a582d7.js"></script></head>
+<div style="display: none;" id="root"></div>
+<body><button onclick="const root = document.getElementById('root');
+      root.style.display = (root.style.display === 'none' ? 'block' : 'none');" id="chatpopup"  style="position: fixed;bottom: 74px;right: 28px;z-index: 1000; background-color: transparent; border: none; padding: 0;" ><img src="assets/img/kaseh-chatbot.png" width="180"></button>
+	<!--
+<a href="https://vpc-nubidesk.nubitel.io:7000/KtmbBot/Chat/ChatClient.aspx?motive=1&amp;motiveText=KtmbBot&amp;name=Guest&amp;email=guest@gmail.com&amp;question=&amp;country=14" style="position: fixed;bottom: 74px;right: 28px;z-index: 100;" target="_blank"><img src="assets/img/chat.png"&nbsp;width="50"></a>-->
+	<!--header start here-->
+
+	<!--start navigation bar-->
+	<div class="wsmenucontainer clearfix">
+		<div class="overlapblackbg"></div>
+
+		<div class="wsmobileheader clearfix">
+			<a id="wsnavtoggle" class="animated-arrow" title="Open menu"><span></span></a>
+			<a href="https://www.ktmb.com.my" class="smallogo" title="KTMB Small Logo">
+				<img src="assets/img/logo_miniktm.png" alt="KTMB Small Logo" style="margin-top: -12px;width: 140px;filter: drop-shadow( 1px 2px 3px white); display: inline-block;"></a>
+			<a class="callusicon" href="tel:0322671200" title="Call us" alt="Please Call Us at 0322671200"><span class="fa fa-phone"></span></a>
+		</div>
+
+		<section class="navigation" style="background-color: #f8f8f8">
+			<header class="header" style="border-bottom: 1px solid rgba(255, 255, 255, 0.2); padding: 8px 0px;">
+				<div class="header-content bigmegamenu clearfix">
+					<div class="logo"><a href="index.html" title="KTMB Logo"><img src="assets/img/logo_miniktm.png" alt="KTMB Logo" style="margin-top: -12px;"></a></div>
+					<nav class="wsmenu slideLeft clearfix">
+						<ul class="mobile-sub wsmenu-list">
+
+							<style>
+								.blinks {
+									color: white;
+									position: relative;
+									animation-name: text;
+									animation-duration: 4s;
+									animation-iteration-count: infinite;
+								}
+
+								@keyframes text {
+									0% {
+										color: black;
+									}
+
+									30% {
+										color: blue;
+										letter-spacing: 0px;
+									}
+
+									85% {
+										color: green;
+										letter-spacing: 0px;
+									}
+
+									100% {
+										color: Red;
+									}
+								}
+							</style>
+
+							<li><a class="blinks" href="TrainTime.html" title="List of Menu About KTMB Train Timetable">&nbsp;&nbsp;Train Timetable</a></li>
+
+							<li><a href="https://online.ktmb.com.my/" title="KTMB KITS Ticketing System Menu Link">&nbsp;&nbsp;KITS
+									Ticketing</a></li>
+
+							<li><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#" title="List Of Menu About KTMB Routes &amp; Stations">&nbsp;&nbsp;Routes &amp; Stations <span class="arrow"></span></a>
+
+								<div class="megamenu clearfix">
+
+									<ul class="col-lg-4 col-md-4 col-xs-12 link-list">
+										<li class="title"><i class="fa fa-train" style="font-size:24px"></i>&nbsp;Discover Routes</li>
+										<li><a href="MapsAndRoute.html" title="Maps &amp; route"><i class="fa fa-arrow-circle-right"></i>Maps &amp;
+												route</a></li>
+									</ul>
+
+									<ul class="col-lg-4 col-md-4 col-xs-12 link-list">
+										<li class="title"><i class="fa fa-pencil-square-o" style="font-size:24px"></i>&nbsp;Main Station
+											info</li>
+										<li><a href="StationInfo.html" title="About KTMB station"><i class="fa fa-arrow-circle-right"></i>About station</a></li>
+									</ul>
+
+									<ul class="col-lg-4 col-md-4 col-xs-12 link-list">
+										<li class="title"><i class="fa fa-bed" style="font-size:24px"></i>&nbsp;&nbsp;Onboard facilities
+										</li>
+										<li><a href="Onboard.html" title="Clean, cozy &amp; relaxed facilities"><i class="fa fa-arrow-circle-right"></i>Clean, cozy &amp; relaxed</a></li>
+									</ul>
+
+								</div>
+							</li>
+
+							<li><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#" title="List of Menu About KTMB Travel Policy">&nbsp;&nbsp;Travel Policy<span class="arrow"></span></a>
+
+								<div class="megamenu clearfix">
+									<ul class="col-lg-3 col-md-3 col-xs-12 link-list">
+										<li class="title"><i class="fa fa-bullhorn" style="font-size:24px"></i>&nbsp;&nbsp;Acts &amp;
+											regulations</li>
+										<li><a href="Act.html" title="Law related to railways"><i class="fa fa-arrow-circle-right"></i>Law
+												related to railways</a></li>
+									</ul>
+
+									<ul class="col-lg-3 col-md-3 col-xs-12 link-list">
+										<li class="title"><i class="fa fa-book" style="font-size:24px"></i>&nbsp;Business policies</li>
+										<li><a href="BusinessPolicies.html" title="Customer privacy policy"><i class="fa fa-arrow-circle-right"></i>Customer privacy policy</a></li>
+									</ul>
+
+									<ul class="col-lg-3 col-md-3 col-xs-12 link-list">
+										<li class="title"><i class="fa fa-book" style="font-size:24px"></i>&nbsp;KITS &amp; KTM Mobile</li>
+										<li><a href="eticketPolicies.html" title="Tickets reservation guideline"><i class="fa fa-arrow-circle-right"></i>Tickets reservation guideline</a></li>
+									</ul>
+
+									<ul class="col-lg-3 col-md-3 col-xs-12 link-list">
+										<li class="title"><i class="fa fa-question-circle-o" style="font-size:24px"></i>&nbsp;FAQ</li>
+										<li><a href="faq.html" title="Frequently Asked Questions"><i class="fa fa-arrow-circle-right"></i>Frequently Asked Questions</a></li>
+									</ul>
+								</div>
+							</li>
+							<li><a href="refund.html" title="Refund &amp; Feedback">Refund &amp; Feedback</a></li>
+						</ul>
+					</nav>
+
+				</div>
+			</header>
+		</section>
+	</div>
+	<!--navigation end here-->
+
+	<!--header start here-->
+	<div>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<style>
+
+.icon-bar {
+  width: 100%;
+  background-color: white;
+  overflow: auto;
+}
+
+.icon-top {
+  width: 100%;
+  background-color: white;
+  overflow: auto;
+}
+
+.icon-bar a {
+  float: left;
+  width: 33.3%;
+  text-align: center;
+  padding: 5px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 18px;
+}
+
+.icon-top p {
+  width: 100%;
+  text-align: center;
+  padding-top: 15px;
+  transition: all 0.3s ease;
+  color: black;
+  font-size: 15px;
+}
+
+.lefts {
+ width:40%;
+ display:inline-block; 
+ margin-left:80%;
+}
+
+.centers {
+ width:40%;
+ display:inline-block; 
+ margin-left:10%;
+}
+
+.rights {
+ width:40%;
+ display:inline-block; 
+ margin-left:-80%;
+}
+  
+  
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px){
+  .icon-top p { padding-top: 40px; }
+  .lefts { width: 70%; margin-left:45%;}
+  .centers{ width: 70%; margin-left:5%;}
+  .rights { width: 70%; margin-left:-55%;}  
+  }
+ 
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px){
+  .icon-top p { padding-top: 40px; }
+  }
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .icon-top p { padding-top: 40px; }
+}
+</style>
+
+
+	<div class="icon-top">
+		<p><b>Official KTMB Mobile Apps</b></p>
+		<div>
+			<div class="icon-bar">
+				<a href="https://play.google.com/store/apps/details?id=com.ktmb.user.mobile&amp;hl=en&amp;gl=US" title="KTMB KITS Mobile In Google PlayStore Download Link" alt="KTMB KITS Mobile In Google PlayStore Download Link" target="blank" style="color: black"><img src="assets/img/2022/google_play.jpg" class="lefts"></a>
+				<a href="https://apps.apple.com/us/app/ktmb-mobile/id1527902857" title="KTMB KITS Mobile In Apple AppStore Download Link" alt="KTMB KITS Mobile In Apple AppStore Download Link" target="blank" style="color: black"><img src="assets/img/2022/app_store.jpg" class="centers"></a>
+				<a href="https://appgallery.huawei.com/app/C102740935" title="KTMB KITS Mobile In Huawei AppGallery Download Link" alt="KTMB KITS Mobile In Huawei AppGallery Download Link" target="blank" style="color: black"><img src="assets/img/2022/app_gallery.jpg" class="rights"></a>		
+
+			</div>
+		</div>
+	</div>
+
+ </div>
+	<!--header end here-->
+
+	<!--inner body start from here-->
+	<div class="inner-body">
+		<!--<div class="wrapper-index">-->
+		<div class="wrapper-inner">
+			<!--Banner start from here-->
+			<div id="banner">
+				<div id="banner_wrapper">
+					<div id="banner_bg_container" class="carousel slide" data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#banner_bg_container" data-slide-to="0" class=""></li>
+							<!--<li data-target="#banner_bg_container" data-slide-to="1"></li>-->
+						</ol>
+
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+
+							<div class="item">
+								<img class="banner_bg-img" data-url="/assets/pdf/2025/EL Aidiladha.pdf" src="assets/img/banner/2025/EL-AIDILADHA-WEB-BANNER-01.jpg" title="" alt="">
+							</div>
+
+							<div class="item">
+								<img class="banner_bg-img" data-url="/TrainTime.html" src="assets/img/banner/2025/Web-Banner---ETS-ke-Segamat.jpg" title="" alt="">
+							</div>
+
+							<div class="item">
+								<img class="banner_bg-img" data-url="assets/img/2025/perubahan-jadual-info.jpeg" src="assets/img/banner/2025/perubahan-jadual-waktu.jpeg" title="" alt="">
+							</div>
+							
+							<div class="item">
+								<img class="banner_bg-img" data-url="https://ktmb.policystreet.com/" src="assets/img/banner/2024/Jom-Naik-Tren-01.jpg" title="" alt="">
+							</div>
+							
+							<div class="item">
+								<img class="banner_bg-img" data-url="http://www.railwaytoseemalaysia.com/" src="assets/img/banner/2024/Web-Banner-RTSM-Baru.jpg" title="" alt="">
+							</div>
+
+							<div class="item active">
+								<img class="banner_bg-img" src="assets/img/banner/2024/WEB-BANNER-slider-2024.jpg" title="" alt="">
+							</div>
+
+							<div class="item">
+								<img class="banner_bg-img" src="assets/img/banner/2024/KASEH_T.WEB-BANNER.jpg" title="Tanya jer Kaseh" alt="Tanya jer Kaseh">
+							</div>
+
+							<div class="item">
+								<img class="banner_bg-img" src="assets/img/banner/2024/OP_TOP-WEB-BANNER-2000x622px.png" title="Ready. Tap. Go!" alt="Ready. Tap. Go!">
+							</div>
+
+							<div class="item">
+								<img class="banner_bg-img" src="assets/img/banner/KITS-KDVT_WEB-BANNER.jpg" title="KITS Kini Untuk Komuter Lembah Klang, Bermula 10 September 2023" alt="KITS Kini Untuk Komuter Lembah Klang, Bermula 10 September 2023">
+							</div>
+
+						</div>
+
+						<!-- Left and right controls -->
+						<a class="left carousel-control" href="#banner_bg_container" data-slide="prev">
+							<span><i class="fa fa-angle-double-left"></i></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#banner_bg_container" data-slide="next">
+							<span><i class="fa fa-angle-double-right"></i></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!--text-box-->
+			<div class="row scroll-text hidden-xs slick-initialized slick-slider">
+				<div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1134px; transform: translate3d(0px, 0px, 0px);" role="listbox"><div class="col-sm-12 slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 1134px;" tabindex="-1" role="option" aria-describedby="slick-slide10">
+					<div class="text-box"></div>
+				</div></div></div>
+			</div>
+		</div>
+		<!--</div>-->
+
+		<div class="wrapper-inner">
+			<br>
+			<div class="rocks_1"></div>
+			<div class="rocks_2"></div>
+			<div class="rails"></div>
+			<div class="train_3"></div>
+			<div class="train_2"></div>
+			<div class="train"></div>
+			<div class="ground"></div>
+			<div class="lights"></div>
+			<div class="sun"></div>
+
+			<div class="container">
+
+				<!--main-fill-->
+				<div class="main-fill">
+
+					<div class="panel">
+
+						<h3 style="font-family: Neosans Light; color: #fff">Check Your Train Timetable &amp; Get The Tickets Now!</h3>
+						<h1 style="font-family: Neosans Light; color: #fff">Take the family on an adventure...</h1>
+
+						<!--panel-body-->
+						<div class="panel-body">
+
+							<!--tab-content-->
+							<div class="tab-content">
+
+								<div class="row">
+									<div class="column">
+										<a href="TrainTime.html" title="KTMB All Train Schedule Menu" target="_blank"><img src="assets/img/2022/train-timetable.jpg" alt="KTMB All Train Schedule Menu" style="width:80%; height: auto;float:left;margin-left:10%;"></a>
+									</div>
+
+									<div class="column">
+										<a href="https://online.ktmb.com.my" title="KTMB KITS New Ticket System Menu" target="_blank"><img src="assets/img/new2021.jpg" alt="KTMB KITS New Ticket System Menu" style="width:80%; height: auto;float:left;margin-left:10%;"></a>
+									</div>
+
+									<div class="column">
+										<a href="https://online.ktmb.com.my" title="KTMB KITS Shuttle Tebrau New Ticketing System Menu" target="_blank"><img src="assets/img/2022/shuttle_tebrau_2022.jpg" alt="KTMB KITS Shuttle Tebrau New Ticketing System Menu" style="width:80%; height: auto;float:left;margin-left:10%;"></a>
+									</div>
+
+									<div class="column">
+										<a href="https://apps.ktmb.com.my/TrainCharted/Home/Index" title="KTMB Charter Train Link Menu" target="_blank"><img src="assets/img/2023/charter-train.jpg" alt="KTMB Charter Train Link Menu" style="width:80%; height: auto;float:left;margin-left:10%;"></a>
+									</div>
+
+
+								</div>
+
+							</div><!--tab-content-->
+
+						</div><!--end panel body-->
+
+					</div><!--end panel-->
+
+					<div style="text-align: center">
+						<a href="assets/pdf/2022/customer_privacy_policy.pdf" title="KTMB Customer Privacy Policy" target="_blank" style="color:#ffff;">Customer Privacy Policy</a>
+					</div>
+				</div><!--end main fill -->
+			</div>
+		</div>
+
+		<div class="modal fade" id="exampleModalLong001" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-body" style="height: auto;overflow-y: auto;">
+						<center>
+							<p>Proceed To JB Sental - Woodlands Singapore Ticketing System: <a href="https://ticket.ktmb.com.my" target="_blank" style="color:red;">Click Here</a>.</p>
+						</center>
+						<object data="assets/pdf/2021/notis-Stesen-JB-Sentral-Kempas-Baru.pdf" type="application/pdf" width="100%" height="600">
+							<p>Not Able To view the file, you may download it here: <a href="assets/pdf/2021/notis-Stesen-JB-Sentral-Kempas-Baru.pdf" target="_blank">Download Notice</a>.
+							</p>
+						</object>
+
+						<br>
+						<p style="text-align: center"><b></b></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="wrapper-v2">
+			<div class="container">
+				<div class="row scroll-index3 slick-initialized slick-slider"><button type="button" data-role="none" class="slick-prev fa fa-angle-left slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>
+
+					<div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 10132px; transform: translate3d(-3278px, 0px, 0px);" role="listbox"><div class="col-md-4 slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" style="width: 298px;" tabindex="-1">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2021/operasi-stesen-kulai.png" title="Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021" alt="Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notice</h3>
+								<p>Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021</p>
+								<p><a href="assets/img/2021/operasi-stesen-kulai.png" title="Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021" alt="Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" style="width: 298px;" tabindex="-1">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2021/Notis.Easybook_NEW.png" title="Notice EASYBOOK (M) SDN. BHD. is no longer KTMB ticket agent" alt="Notice EASYBOOK (M) SDN. BHD. is no longer KTMB ticket agent" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notice</h3>
+								<p>EASYBOOK (M) SDN. BHD. is no longer KTMB ticket agent</p>
+								<p><a href="http://intranet4.ktmb.com.my/ktmb/uploads/files/pdf/2021/Notis-Easybook-PDF-NEW.pdf" title="Notice EASYBOOK (M) SDN. BHD. is no longer KTMB ticket agent" class="btn btn_select-v0" data-toggle="modal" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 298px;" tabindex="-1">
+						<div class="index_v3_scroll">
+							<img src="assets/img/stc_booking.jpg" title="Information South Thai Cargo (STC) Services - Online Booking Now Open For Registration" alt="Information South Thai Cargo (STC) Services - Online Booking Now Open For Registration" class="img-responsive">
+							<div class="detail_box">
+								<h3>STC Booking</h3>
+								<p>South Thai Cargo (STC) Services - Online Booking Now Open For Registration</p>
+								<p><a href="stc.html" title="Information South Thai Cargo (STC) Services - Online Booking Now Open For Registration" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="0" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide00">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/EL-AIDILADHA-500x500_WEB-SLIDER-KITS-500X500.jpg" title="Ekspres Lambaian Aidiladha #TrainToKampung" class="img-responsive">
+							<div class="detail_box">
+								<h3>Announcement</h3>
+								<p>Ekspres Lambaian Aidiladha #TrainToKampung</p>
+								<p><a href="assets/pdf/2025/EL Aidiladha.pdf" target="_blank" title="Ekspres Lambaian Aidiladha #TrainToKampung" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="1" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide01">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/Ulang-Tahun-Koc-Wanita.jpg" title="Ulang Tahun KOC Wanita" class="img-responsive">
+							<div class="detail_box">
+								<h3>Announcement</h3>
+								<p>Ulang Tahun KOC Wanita</p>
+								<p><a href="assets/img/2025/Ulang-Tahun-Koc-Wanita-Actual.jpg" target="_blank" title="Ulang Tahun KOC Wanita" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="2" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide02">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/Notis---Kaunter-KL-Sentral.jpg" title="Kaunter ETS di KL Sentral" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notis</h3>
+								<p>Kaunter ETS di KL Sentral</p>
+								<p><a href="assets/img/2025/Notis---Kaunter-KL-Sentral.jpg" target="_blank" title="Kaunter ETS di KL Sentral" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="3" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide03">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/Notis-Pemakluman-Perubahan-Jadual-Waktu-KTM-Komuter-2025.jpg" title="Perubahan Jadual Perkhidmatan KTM Komuter Lembah Klang" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notis</h3>
+								<p>Perubahan Jadual Perkhidmatan KTM Komuter Lembah Klang</p>
+								<p><a href="TrainTime.html" target="_blank" title="Perubahan Jadual Perkhidmatan KTM Komuter Lembah Klang" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="4" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide04">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/Notis-Perubahan-Platform.jpg" title="Informasi Jadual Perkhidmatan KTM Komuter Lembah Klang" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notis</h3>
+								<p>Informasi Jadual Perkhidmatan KTM Komuter Lembah Klang</p>
+								<p><a href="assets/img/2025/Notis-Perubahan-Platform.jpg" target="_blank" title="Informasi Jadual Perkhidmatan KTM Komuter Lembah Klang" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="5" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide05">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/perubahan-jadual-info.jpeg" title="Panduan Perjalanan Penumpang Stesen Pelabuhan Klang - KL Sentral - Pelabuhan Klang" class="img-responsive">
+							<div class="detail_box">
+								<h3>Announcement</h3>
+								<p>Panduan Perjalanan Penumpang Stesen Pelabuhan Klang - KL Sentral - Pelabuhan Klang</p>
+								<p><a href="assets/img/2025/perubahan-jadual-info.jpeg" target="_blank" title="Panduan Perjalanan Penumpang Stesen Pelabuhan Klang - KL Sentral - Pelabuhan Klang" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="6" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide06">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/MyRail-Life.jpg" title="MyRail Life - Pass Perjalanan Percuma" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>MyRail Life - Pass Perjalanan Percuma</p>
+								<p><a href="/assets/pdf/2025/MyRail-Life_FAQ.pdf" target="_blank" title="MyRail Life - Pass Perjalanan Percuma" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="7" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide07">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/MySawasdee-2025.jpg" title="MySawasdee 2025" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>MySawasdee 2025</p>
+								<p><a href="/assets/pdf/2025/Jadual-Sawasdee-A4.pdf" target="_blank" title="MySawasdee 2025" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide slick-current slick-active" data-slick-index="8" aria-hidden="false" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide08">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/ktmb-guidebook.jpg" title="KTMB Train Usage Guidebook : Happy Journey Begins With KTMB" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>KTMB Train Usage Guidebook : Happy Journey Begins With KTMB</p>
+								<p><a href="assets/pdf/2024/FINAL BUKU PANDUAN PENGGUNAAN KERETAPI KTMB (Ver Eng).pdf" target="_blank" title="KTMB Train Usage Guidebook : Happy Journey Begins With KTMB" class="btn btn_select-v0" style="margin-bottom:5px;" tabindex="0">English</a><br>
+								<a href="assets/pdf/2024/FINAL BUKU PANDUAN PENGGUNAAN KERETAPI KTMB (BM vERS).pdf" target="_blank" title="KTMB Train Usage Guidebook : Happy Journey Begins With KTMB" class="btn btn_select-v0" tabindex="0">Bahasa Melayu</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide slick-active" data-slick-index="9" aria-hidden="false" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide09">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/SUBSIDI-MADANI-KTMB-2024-01.jpg" title="Tren subsidi madani" class="img-responsive">
+							<div class="detail_box">
+								<h3>Announcement</h3>
+								<p>Tren subsidi madani</p>
+								<p><a href="assets/img/2024/SUBSIDI-MADANI-KTMB-2024-01.jpg" target="_blank" title="Tren subsidi madani" class="btn btn_select-v0" tabindex="0">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide slick-active" data-slick-index="10" aria-hidden="false" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide010">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/SRT-bg-head.jpg" title="State Railway of Thailand: Easy Booking" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p style="text-transform: none;">State Railway of Thailand: Easy Booking</p>
+								<p><a href="https://www.dticket.railway.co.th/" target="_blank" title="State Railway of Thailand: Easy Booking" class="btn btn_select-v0" tabindex="0">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="11" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide011">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/Tiket-Integrasi-KTMB-x-ERL.jpg" title="Dapatkan Tiket Integrasi KTMB + ERL Dalam Satu Transaksi!" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>Dapatkan Tiket Integrasi KTMB + ERL Dalam Satu Transaksi!</p>
+								<p><a href="assets/pdf/2024/FAQ - Tiket Integrasi KTMB x ERL (Latest).pdf" target="_blank" title="Dapatkan Tiket Integrasi KTMB + ERL Dalam Satu Transaksi!" class="btn btn_select-v0" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="12" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide012">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/2024_Social-Media_Labis_18062024_v3-01.jpg" title="Pemindahan Operasi Stesen Sementara Labis" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notis</h3>
+								<p>Pemindahan Operasi Stesen Sementara Labis</p>
+								<p><a href="assets/img/2024/2024_Thumbnail_Labis_18062024_V3-01.png" target="_blank" title="Pemindahan Operasi Stesen Sementara Labis" class="btn btn_select-v0" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="13" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide013">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/2024_Social-Media_Labis-New-Station_18062024_v3-01.jpg" title="Pemindahan Operasi stesen sementara Bekok ke stesen Bekok (baharu)" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notis</h3>
+								<p>Pemindahan Operasi stesen sementara Bekok ke stesen Bekok (baharu)</p>
+								<p><a href="assets/img/2024/2024_Social-Media_Labis-New-Station_18062024_v3-01.jpg" target="_blank" title="Pemindahan Operasi stesen sementara Bekok ke stesen Bekok (baharu)" class="btn btn_select-v0" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="14" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide014">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/Thumbnail-Stesen-Segamat_15052024.jpg" title="Stesen Segamat" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notis</h3>
+								<p>Pemindahan operasi stesen sementara Segamat pada 15 Mei 2024</p>
+								<p><a href="assets/img/2024/Thumbnail Stesen Segamat_15052024.png" target="_blank" title="Stesen Segamat" class="btn btn_select-v0" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="15" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide015">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/NOTIS BASIKAL.jpg" title="Notis Larangan Basikal" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notis</h3>
+								<p>Basikal tidak dibenarkan di dalam tren ETS &amp; KTM Intercity</p>
+								<p><a href="assets/img/2024/NOTIS BASIKAL.jpg" title="Notis Larangan Basikal" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="16" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide016">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/ST_Ticket-Fare-500px.jpg" title="Shuttle Tebrau Ticket Fares" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>Shuttle Tebrau Ticket Fares</p>
+								<p><a href="assets/pdf/2024/ST_FAQ Tambang Tiket (All).pdf" title="Shuttle Tebrau Ticket Fares" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="17" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide017">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/OP_WEB-SLIDER-500pxl.jpg" title="Ready. Tap. Go!" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>Ready. Tap. Go!</p>
+								<p><a href="assets/pdf/2024/OP_FLYER A5 FA OL.pdf" title="Ready. Tap. Go!" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="18" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide018">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/kempas-baru.jpg" title="Stesen Kempas Baru Akan Berpindah Ke Lokasi Baharu - 6 Februari 2024" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>Stesen Kempas Baru Akan Berpindah Ke Lokasi Baharu - 6 Februari 2024</p>
+								<p><a href="assets/pdf/2024/kempas-baru-view.pdf" title="Stesen Kempas Baru Akan Berpindah Ke Lokasi Baharu - 6 Februari 2024" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="19" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide019">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/RR_FAQ-Front-Page-v2.jpg" title="Rail Rewards - More Travel More Points" alt="Rail Rewards - More Travel More Points" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>Rail Rewards - More Travel More Points</p>
+								<p><a href="assets/pdf/2025/RR_FAQ_Web A4 Mac 25.pdf" title="Rail Rewards - More Travel More Points" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="20" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide020">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/PassKomLink.jpg" title="Pas Mingguan &amp; Pas Bulanan KTM Komuter Kini Menggunakan Kad Komuter Link" alt="Pas Mingguan &amp; Pas Bulanan KTM Komuter Kini Menggunakan Kad Komuter Link" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>Pas Mingguan &amp; Pas Bulanan KTM Komuter Kini Menggunakan Kad Komuter Link</p>
+								<p><a href="assets/pdf/2022/PASS-MYKOM.pdf" title="Pas Mingguan &amp; Pas Bulanan KTM Komuter Kini Menggunakan Kad Komuter Link" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="21" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide021">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2022/kits-ets-takaful.png" title="KITS Passenger Takaful Plan Protection for ETS Services" alt="KITS Passenger Takaful Plan Protection for ETS Services" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>KITS Passenger Takaful Plan Protection for ETS Services</p>
+								<p><a href="assets/pdf/2022/kits-ets-takaful.pdf" title="KITS Passenger Takaful Plan Protection for ETS Services" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="22" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide022">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2022/30-minutes-ETS.jpg" title="ETS Passangers To Arrive Early At Station 30 Minutes Before Departure Time" alt="ETS Passangers To Arrive Early At Station 30 Minutes Before Departure Time" class="img-responsive">
+							<div class="detail_box">
+								<h3>Important Notice</h3>
+								<p>ETS Passangers To Arrive Early At Station 30 Minutes Before Departure Time</p>
+								<p><a href="assets/pdf/2022/30-minutes-ETS.pdf" title="ETS Passangers To Arrive Early At Station 30 Minutes Before Departure Time" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="23" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide023">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2024/Ride-n-Ride.jpg" title="KTM Komuter Ride n’ Ride" alt="KTM Komuter Ride n’ Ride" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>KTM Komuter Ride n’ Ride</p>
+								<p><a href="assets/pdf/2024/Ride&amp;Ride.pdf" title="KTM Komuter Ride n’ Ride" alt="KTM Komuter Ride n’ Ride" class="btn btn_select-v0" target="_blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="24" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide024">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2021/PENDAFTARAN-KONSESI-VISUAL.png" title="Panduan Pendaftaran Atau Pembaharuan untuk Semua Pemegang Konsesi KTMB" alt="Panduan Pendaftaran Atau Pembaharuan untuk Semua Pemegang Konsesi KTMB" class="img-responsive">
+							<div class="detail_box">
+								<h3>Special Announcement</h3>
+								<p>Panduan Pendaftaran Atau Pembaharuan untuk Semua Pemegang Konsesi KTMB</p>
+								<p><a href="assets/pdf/2021/PENDAFTARAN-KONSESI.pdf" title="Panduan Pendaftaran Atau Pembaharuan untuk Semua Pemegang Konsesi KTMB" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="25" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide025">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2021/operasi-stesen-kulai.png" title="Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021" alt="Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notice</h3>
+								<p>Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021</p>
+								<p><a href="assets/img/2021/operasi-stesen-kulai.png" title="Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021" alt="Operasi Stesen Kulai Akan Berpindah Ke Lokasi Sementara Bermula 2 September 2021" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="26" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide026">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2021/Notis.Easybook_NEW.png" title="Notice EASYBOOK (M) SDN. BHD. is no longer KTMB ticket agent" alt="Notice EASYBOOK (M) SDN. BHD. is no longer KTMB ticket agent" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notice</h3>
+								<p>EASYBOOK (M) SDN. BHD. is no longer KTMB ticket agent</p>
+								<p><a href="http://intranet4.ktmb.com.my/ktmb/uploads/files/pdf/2021/Notis-Easybook-PDF-NEW.pdf" title="Notice EASYBOOK (M) SDN. BHD. is no longer KTMB ticket agent" class="btn btn_select-v0" data-toggle="modal" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide" data-slick-index="27" aria-hidden="true" style="width: 298px;" tabindex="-1" role="option" aria-describedby="slick-slide027">
+						<div class="index_v3_scroll">
+							<img src="assets/img/stc_booking.jpg" title="Information South Thai Cargo (STC) Services - Online Booking Now Open For Registration" alt="Information South Thai Cargo (STC) Services - Online Booking Now Open For Registration" class="img-responsive">
+							<div class="detail_box">
+								<h3>STC Booking</h3>
+								<p>South Thai Cargo (STC) Services - Online Booking Now Open For Registration</p>
+								<p><a href="stc.html" title="Information South Thai Cargo (STC) Services - Online Booking Now Open For Registration" class="btn btn_select-v0" target="blank" tabindex="-1">Details</a></p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide slick-cloned" data-slick-index="28" aria-hidden="true" style="width: 298px;" tabindex="-1">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/EL-AIDILADHA-500x500_WEB-SLIDER-KITS-500X500.jpg" title="Ekspres Lambaian Aidiladha #TrainToKampung" class="img-responsive">
+							<div class="detail_box">
+								<h3>Announcement</h3>
+								<p>Ekspres Lambaian Aidiladha #TrainToKampung</p>
+								<p><a href="assets/pdf/2025/EL Aidiladha.pdf" target="_blank" title="Ekspres Lambaian Aidiladha #TrainToKampung" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide slick-cloned" data-slick-index="29" aria-hidden="true" style="width: 298px;" tabindex="-1">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/Ulang-Tahun-Koc-Wanita.jpg" title="Ulang Tahun KOC Wanita" class="img-responsive">
+							<div class="detail_box">
+								<h3>Announcement</h3>
+								<p>Ulang Tahun KOC Wanita</p>
+								<p><a href="assets/img/2025/Ulang-Tahun-Koc-Wanita-Actual.jpg" target="_blank" title="Ulang Tahun KOC Wanita" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div><div class="col-md-4 slick-slide slick-cloned" data-slick-index="30" aria-hidden="true" style="width: 298px;" tabindex="-1">
+						<div class="index_v3_scroll">
+							<img src="assets/img/2025/Notis---Kaunter-KL-Sentral.jpg" title="Kaunter ETS di KL Sentral" class="img-responsive">
+							<div class="detail_box">
+								<h3>Notis</h3>
+								<p>Kaunter ETS di KL Sentral</p>
+								<p><a href="assets/img/2025/Notis---Kaunter-KL-Sentral.jpg" target="_blank" title="Kaunter ETS di KL Sentral" class="btn btn_select-v0" tabindex="-1">Details</a><br>
+								</p>
+							</div>
+						</div>
+					</div></div></div>
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+				<button type="button" data-role="none" class="slick-next fa fa-angle-right slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button></div>
+			</div>
+		</div>
+
+		<div class="banner-v2">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-8">
+						<img src="assets/img/ets-logo.png" alt="ETS Logo" height="50px">
+						<h3>Look inside ETS</h3>
+						<h2 id="color_h2">If you need to travel a long distance quickly,<br> you should think of us</h2>
+						<p>
+						</p><p><a href="ETS.html" title="Menu Link To Read More About KTMB ETS" class="btn-read-more-v2">Read More</a>
+						</p>
+						<p></p>
+					</div>
+					<div class="col-lg-2 visible-lg static-cols">
+						<div class="img"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p></p>
+
+		<div class="banner-v6">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-lg-8">
+						<img src="assets/img/intercity-logo.png" alt="Intercity Logo" width="250px">
+						<h3>Groundbreaking with KTM INTERCITY</h3>
+						<h2 id="color_h2">The chance to enjoy travelling along the iconic line</h2>
+						<p>
+						</p><p><a id="color_a" href="Intercity.html" title="Menu Link To Read More About KTM Intercity" class="btn-read-more-v2">Read More</a></p>
+						<p></p>
+						<div class="col-lg-2 visible-lg static-cols">
+							<div class="img"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p></p>
+
+		<div class="banner-v7">
+			<div class="container">
+				<div class="row" ;="">
+					<div class="col-md-12 col-lg-8">
+						<img src="assets/img/komuter-logo.png" alt="Komuter Logo" height="50px">
+						<h3>Hassle-free with KTM KOMUTER</h3>
+						<h2 id="color_h2">Country's pioneer rail provider</h2>
+						<p>
+						</p><p><a href="Komuter.html" title="Menu Link To Read More About KTM Komuter" class="btn-read-more-v2">Read
+								More</a></p>
+						<p></p>
+					</div>
+					<div class="col-lg-2 visible-lg static-cols">
+						<div class="img"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p></p>
+
+		<div class="banner-v9">
+			<div class="container">
+				<div class="row" ;="">
+					<div class="col-md-12 col-lg-8">
+						<img src="assets/img/kargo-logo.png" alt="KTMB Kargo Logo" height="100px">
+						<h3>Delivering Values with KTM Kargo</h3>
+						<h2 id="color_h2">Start building a reliable way to connect with people</h2>
+						<p>
+						</p><p><a href="Kargo.html" title="Menu Link To Read More About KTMB Kargo" class="btn-read-more-v2">Read
+								More</a></p>
+						<p></p>
+					</div>
+					<div class="col-lg-2 visible-lg static-cols">
+						<div class="img"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p></p>
+
+		<div class="banner-v10">
+			<div class="container">
+				<div class="row" ;="">
+					<div class="col-md-12 col-lg-8">
+						<img src="assets/img/logo_miniktm.png" alt="Rail Boutique Logo" height="50px">
+						<h3>Introducing Rail Boutique</h3>
+						<h2 id="color_h2">KTMB Online Merchandise Store</h2>
+						<p>
+						</p><p><a href="https://shopee.com.my/railboutiquektmb.os" title="Menu Link To Read More About KTMB Rail Boutique Merchandise Store Online Shopping" target="_blank" class="btn-read-more-v2">Shop Now</a></p>
+						<p></p>
+					</div>
+					<div class="col-lg-2 visible-lg static-cols">
+						<div class="img"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p></p>
+
+		<div class="banner-v11">
+			<div class="container">
+				<div class="row" ;="">
+					<div class="col-md-12 col-lg-8">
+						<img src="assets/img/logo_pb.png" alt="Auxiliary Police Logo" height="140px">
+						<h3>Going on patrol with Auxiliary Police</h3>
+						<h2 id="color_h2">KTMB Official Auxiliary Police</h2>
+						<p>
+						</p><p><a href="https://polisbantuan.ktmb.com.my" title="Menu Link To Read More About KTMB Auxiliary Police" target="_blank" class="btn-read-more-v2">Read More</a></p>
+						<p></p>
+					</div>
+					<div class="col-lg-2 visible-lg static-cols">
+						<div class="img"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p></p>
+
+		<div class="banner-v12">
+			<div class="container">
+				<div class="row" ;="">
+					<div class="col-md-12 col-lg-8">
+						<img src="assets/img/logo_miniktm.png" alt="Contact-Us" height="50px">
+						<h3>Smart Partnerships</h3>
+						<h2 id="color_h2">We Also Provide Business Opportunities For You</h2>
+						<p>
+						</p><p><a href="smart-partnerships.html" title="Menu Link To Read More About KTMB Smart Partnerships In Business" class="btn-read-more-v2">Read
+								More</a></p>
+						<p></p>
+					</div>
+					<div class="col-lg-2 visible-lg static-cols">
+						<div class="img"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p></p>
+
+
+		<div class="banner-v14">
+			<div class="container">
+				<div class="row" ;="">
+					<div class="col-md-12 col-lg-8">
+						<br>
+						<img src="assets/img/logo_miniktm.png" alt="KTMB Charter Train" height="50px">
+						<h3>Charter Train</h3>
+						<h2 id="color_h2">Your Fascinating Journey Starts Here. Click Here to Estimate Your Train Charter Price</h2>
+						<p>
+						</p><p><a href="https://apps.ktmb.com.my/TrainCharted/Home/Index" target="_blank" title="Menu Link To Read More About KTMB Charter Train, Your Fascinating Journey Starts Here" class="btn-read-more-v2">Read More</a></p>
+						<p></p>
+					</div>
+					<div class="col-lg-2 visible-lg static-cols">
+						<div class="img"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p></p>
+
+		<div class="iner">
+			<div class="row" ;="">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+					<ul class="pictureUl">
+						<li class="pictureLi img-responsive"><a href="news_2023.html" title="Menu Link To Read More About KTMB News Articles" class="button" style="width: 100%;height: 100%;border-color: transparent;"></a></li>
+						<li class="pictureLi img-responsive"><a href="ebook-launch.html" class="button" title="Menu Link To Read More About KTMB Museum E-Book" style="width: 100%;height: 100%;border-color: transparent;"></a></li>
+						<li class="pictureLi img-responsive"><a href="#" title="Menu Link To Read More About KTMB Photo Gallery" target="blank" class="button" style="width: 100%;height: 100%;border-color: transparent;"></a></li>
+
+					</ul>
+
+				</div>
+				<div class="col-lg-2 visible-lg static-cols">
+					<div class="img">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end inner -->
+
+	<!--back_to_top-->
+	<button onclick="topFunction()" id="myBtn" title="Go to top" style="display: none;"><i class="fa fa-chevron-up"></i></button>
+	<!--end-->
+
+	<!--footer start here-->
+
+	<div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+	@media only screen and (max-width: 376px) {
+		.social-icon {
+			float: left;
+		}
+
+		#social-icon ul {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+		}
+	}
+
+	#myBtn {
+		display: none;
+		position: fixed;
+		bottom: 20px;
+		right: 30px;
+		z-index: 99;
+		font-size: 18px;
+		border: none;
+		outline: none;
+		background-color: blue;
+		color: white;
+		cursor: pointer;
+		padding: 15px;
+		border-radius: 4px;
+	}
+
+	#myBtn:hover {
+		background-color: #555;
+	}
+</style>
+<!--footer start here-->
+<footer class="main-footer" style="background:linear-gradient(to right, #4b6cb7, #0e244f)">
+	<!--end button here-->
+	<div class="" style="margin: 20px 80px">
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div class="inner-footer">
+
+					<div itemscope="" itemtype="http://schema.org/LocalBusiness">
+						<img itemprop="image" src="assets/img/logo_miniktm.png" alt="KTMB Logo" style="margin-left: -14px;">
+						<br><br>
+
+						<p class="footer-text"><span itemprop="name"><a itemprop="url" href="#" title="Address Title"><i class="fa fa-map-marker"></i></a> Strategic Communication Units,</span></p>
+
+						<div itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+							<p class="footer-text"><span itemprop="streetAddress"><a href="#" title="Address Row 1"></a> KTMB
+									Corporate Headquarters,<br> Jalan Sultan Hishamuddin,</span><br><span itemprop="postalCode">50621</span><span itemprop="addressLocality"> Wilayah
+									Persekutuan,</span><br><span itemprop="addressRegion"> Kuala Lumpur.</span></p>
+							<br>
+						</div>
+						<p class="footer-text"><span itemprop="telephone"><a href="tel:+60322671200" title="Call Center Phone Number"><i class="fa fa-phone"></i></a> Call Center: +603 - 9779 1200</span></p>
+						
+						<p class="footer-text"><span itemprop="openingHours"><a href="assets/img/2021/CCS_main.png" title="Call Center Operation Time" target="_blank"><i class="fa fa-clock-o"></i></a> Operation Time:
+								7:00 AM - 10:00 PM</span></p>
+						<p class="footer-text"><span itemprop="email"><a href="mailto:callcenter@ktmb.com.my" title="Call Center Official Email"><i class="fa fa-envelope"></i></a> Email: callcenter@ktmb.com.my
+						</span></p>
+					</div>
+
+					<div class="social-icon">
+						<ul class="list-unstyled list-inline ">
+							<li>
+								<a href="https://www.facebook.com/ktmberhad/" title="KTMB Facebook Link" target="blank"> <span class="social-icon" style="background: #3B5998;"><i class="fab fa-facebook" style="color: white"></i></span></a>
+							</li>
+							<li>
+								<a href="https://twitter.com/ktm_berhad?lang=en" title="KTMB Twitter Link" target="blank"> <span class="social-icon" style="background: #55ACEE;"><i class="fab fa-twitter" style="color: white"></i></span></a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/ktmbofficial/?hl=en" title="KTMB Instagram Link" target="blank">
+									<span class="social-icon" style="background: #ea4c89;"><i class="fab fa-instagram" style="color: white"></i></span></a>
+							</li>
+							<li>
+								<a href="https://www.youtube.com/KTMBRailChannel " title="KTMB Youtube Channel" target="blank"> <span class="social-icon" style="background: #ea4c89;"><i class="fab fa-youtube" style="color: white"></i></span></a>
+							</li>
+							<li>
+								<a href="https://www.tiktok.com/@ktmbofficial?" title="KTMB TikTok" target="blank"> <span class="social-icon" style="background: #111111;"><i class="fab fa-tiktok" style="color: white"></i></span></a>
+							</li>
+							<li>
+								<a href="https://www.linkedin.com/company/ktmberhad-official" title="KTMB Linkedin" target="blank">
+									<span class="social-icon" style="background: #55ACEE;"><i class="fab fa-linkedin" style="color: white"></i></span></a>
+							</li>
+
+						</ul>
+					</div>
+
+					<div class="social-icon">
+						<h5 style="color:white;">Download Official KTMB Mobile Apps</h5>
+						<ul class="list-unstyled list-inline ">
+							<li>
+								<a href="https://play.google.com/store/apps/details?id=com.ktmb.user.mobile&amp;hl=en&amp;gl=US" title="KTMB KITS Mobile In Google PlayStore Download Link" target="blank" style="color: white"><i class="fab fa-google-play" style="color: white"></i> &nbsp;&nbsp;Google Play</a>
+							</li><br>
+							<li>
+								<a href="https://apps.apple.com/us/app/ktmb-mobile/id1527902857" title="KTMB KITS Mobile In Apple AppStore Download Link" target="blank" style="color: white"><i class="fab fa-app-store" style="color: white"></i> &nbsp;&nbsp;Apple AppStore</a>
+							</li><br>
+							<li>
+								<a href="https://appgallery.huawei.com/app/C102740935" title="KTMB KITS Mobile In Huawei AppGallery Download Link" target="blank" style="color: white"><i class="fab fa-google-play" style="color: white"></i> &nbsp;&nbsp;Huawei AppGallery</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-2 col-sm-6 col-xs-12">
+				<div class="inner-footer1">
+					<h4>About KTMB</h4>
+					<div class="btn-group">
+						<a href="About.html" title="About Us Link" alt="KTMB About Us Link" class="quick-link">About
+							Us</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i> <br><br>
+						<a href="Corporate.html" title="Corporate Link" class="quick-link">Corporate</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="news_2025.html" title="News &amp; Media Link" class="quick-link">News &amp; Media</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="https://jobs-ktmb.talentcloud.ai/ktmb" target="_blank" title="Career Link" class="quick-link">Career</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="Tender.html" title="Tender, RFP &amp; Assets Disposal Link" class="quick-link">Tender, RFP &amp; Assets
+							Disposal</a>&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="https://form.ktmb.com.my/eproc/eProc/index.php?module=weba&amp;cat=1" title="RFQ &amp; Tender" class="quick-link" target="blank">RFQ &amp; Tender</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="/assets/pdf/2022/customer_privacy_policy.pdf" title="Customer Privacy Policy" target="_blank" class="quick-link">Customer Privacy Policy</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="/assets/pdf/2024/ktmb website terms &amp; conditions-20.5.24.pdf" title="Website Terms &amp; Conditions" target="_blank" class="quick-link">Website Terms &amp; Conditions</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="col-md-2 col-sm-6 col-xs-12">
+				<div class="inner-footer1">
+					<h4>Discover</h4>
+					<div class="btn-group">
+						<a href="http://www.multimodal.com.my/" title="Multimodal Freight Link" class="quick-link" target="blank">Multimodal Freight</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="https://polisbantuan.ktmb.com.my" title="KTMB Auxiliary Police" class="quick-link" target="blank">KTMB Auxiliary Police</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="https://myra.ktmb.com.my" title="Akademi KTM (MyRA) Link" class="quick-link" target="blank">Akademi
+							KTM (MyRA)</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="whistleblower.html" title="Whistleblowing Form" class="quick-link" target="blank">Whistleblowing
+							Form</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="passenger-condition.html" title="Conditions Of Carriage For Passenger Services" class="quick-link" target="blank">Conditions Of Carriage For Passenger Services</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="/assets/pdf/2025/PERNYATAAN POLISI KONFLIK KEPENTINGAN KTMB.pdf" title="Pernyataan Polisi Konflik Kepentingan KTMB" class="quick-link" target="blank">Pernyataan Polisi Konflik Kepentingan KTMB</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="/assets/pdf/2025/PERNYATAAN POLISI ANTIRASUAH KTMB.pdf" title="Pernyataan Polisi Antirasuah KTMB" class="quick-link" target="blank">Pernyataan Polisi Antirasuah KTMB</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-2 col-sm-6 col-xs-12">
+				<div class="inner-footer1">
+					<h4>Quick Link</h4>
+					<div class="btn-group">
+						<a href="https://intranet4.ktmb.com.my/ktmb/index.php?r=cms/login" title="Staff Login Link" target="blank" class="quick-link">Staff Login</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="https://webmail.ktmb.com.my/owa/auth/logon.aspx?replaceCurrent=1&amp;url=https%3a%2f%2fwebmail.ktmb.com.my%2fowa" title="Corporate Email Link" target="blank" class="quick-link">Email</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="https://intranet.ktmb.com.my/fol/logon.aspx" title="Freight Online Link" target="blank" class="quick-link">Freight Online</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="http://form.ktmb.com.my/i-Medic/index.html" title="KTMB Panel Clinic Link" target="blank" class="quick-link">Panel Clinic</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="http://www.ktmb.com.my/Procurement.html" title=">Supplier Registration Link" target="blank" class="quick-link">Supplier Registration</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="https://ekyf.fa.ap1.oraclecloud.com/" title="e-Procurement Link" target="blank" class="quick-link">e-Procurement</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>
+						<a href="https://apps.ktmb.com.my/e-invoiceWeb" title="e-Invoice Link" target="blank" class="quick-link">e-Invoice </a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>						
+						<a href="https://statistik.ktmb.com.my/public/dashboard/2b9b6fcd-3b15-4073-9fbf-0da89533a6b9" title="e-Invoice Link" target="blank" class="quick-link">Public Dashboard</a>&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-right quick-link-text"></i><br><br>				
+
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-3 hidden-sm hidden-xs col-xs-12">
+				<div class="inner-footer2">
+					<h4>Twitter</h4>
+					<ul class="list-inline list-unstyled">
+						<li>
+							<div class="content-news" style="margin-top: -10px">
+
+								<div class="twitter-timeline twitter-timeline-rendered" style="display: flex; width: 280px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" title="Twitter Timeline" src="https://syndication.twitter.com/srv/timeline-profile/screen-name/ktm_berhad?dnt=false&amp;embedId=twitter-widget-0&amp;features=eyJ0ZndfdGltZWxpbmVfbGlzdCI6eyJidWNrZXQiOltdLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2ZvbGxvd2VyX2NvdW50X3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9iYWNrZW5kIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19yZWZzcmNfc2Vzc2lvbiI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfZm9zbnJfc29mdF9pbnRlcnZlbnRpb25zX2VuYWJsZWQiOnsiYnVja2V0Ijoib24iLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X21peGVkX21lZGlhXzE1ODk3Ijp7ImJ1Y2tldCI6InRyZWF0bWVudCIsInZlcnNpb24iOm51bGx9LCJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3Nob3dfYmlyZHdhdGNoX3Bpdm90c19lbmFibGVkIjp7ImJ1Y2tldCI6Im9uIiwidmVyc2lvbiI6bnVsbH0sInRmd19kdXBsaWNhdGVfc2NyaWJlc190b19zZXR0aW5ncyI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdXNlX3Byb2ZpbGVfaW1hZ2Vfc2hhcGVfZW5hYmxlZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9LCJ0ZndfdmlkZW9faGxzX2R5bmFtaWNfbWFuaWZlc3RzXzE1MDgyIjp7ImJ1Y2tldCI6InRydWVfYml0cmF0ZSIsInZlcnNpb24iOm51bGx9LCJ0ZndfbGVnYWN5X3RpbWVsaW5lX3N1bnNldCI6eyJidWNrZXQiOnRydWUsInZlcnNpb24iOm51bGx9LCJ0ZndfdHdlZXRfZWRpdF9mcm9udGVuZCI6eyJidWNrZXQiOiJvbiIsInZlcnNpb24iOm51bGx9fQ%3D%3D&amp;frame=false&amp;hideBorder=false&amp;hideFooter=false&amp;hideHeader=false&amp;hideScrollBar=false&amp;lang=en&amp;maxHeight=280px&amp;origin=https%3A%2F%2Fwww.ktmb.com.my%2F&amp;sessionId=6ed256737387774427cdf0fe4219b3c8e528b6b7&amp;showHeader=true&amp;showReplies=false&amp;transparent=false&amp;widgetsVersion=2615f7e52b7e0%3A1702314776716" style="position: absolute; visibility: hidden; width: 0px; height: 0px; display: block; flex-grow: 1;"></iframe></div><a class="twitter-timeline" data-width="280" data-height="280" href="https://twitter.com/ktm_berhad?ref_src=twsrc%5Etfw" title="KTMB Tweets" data-twitter-extracted-i1749190849112302345="true">Tweets by ktm_berhad</a>
+								<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+							</div>
+
+							<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div>
+							<script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/ms_MY/sdk.js#xfbml=1&amp;version=v8.0" nonce="Uy5Qw54T"></script>
+							<p>
+							</p><h4>Facebook</h4>
+							<div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/ktmberhad/" data-tabs="timeline" data-width="280" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=&amp;container_width=197&amp;height=300&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fktmberhad%2F&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;small_header=true&amp;tabs=timeline&amp;width=280"><span style="vertical-align: bottom; width: 197px; height: 300px;"><iframe name="f76dd2361a9438394" width="280px" height="300px" data-testid="fb:page Facebook Social Plugin" title="fb:page Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="https://web.facebook.com/v3.2/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Df4490cf630a4ac53a%26domain%3Dwww.ktmb.com.my%26is_canvas%3Dfalse%26origin%3Dhttps%253A%252F%252Fwww.ktmb.com.my%252Ffbbff3f6a3e5f7207%26relation%3Dparent.parent&amp;container_width=197&amp;height=300&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2Fktmberhad%2F&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=false&amp;small_header=true&amp;tabs=timeline&amp;width=280" style="border: none; visibility: visible; width: 197px; height: 300px;" class=""></iframe></span></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<p style="background-color: #001847 ; margin-top: unset;color: #fff" class="footer-bottom">
+		2018 All Rights Reserved KTM Berhad, KTM Berhad shall not be liable for any loss or damage caused by the usage of
+		any information obtained from this site.
+		<br>
+		© copyright 2018 by
+		<a href="https://www.ktmb.com.my" title="KTMB Web Footer" style="color:#fff">KTM Berhad</a>
+		<br>
+		<a class="small" style="color:white;">Best View : Mozilla Firefox v61.0, Google Chrome v68.0, Microsoft Edge</a>
+
+		<a class="small" style="color:white;"> - Best Resolution: 1280 x 900</a>
+	</p>
+
+</footer>
+<script src="assets/js/chat-popup.js"></script>
+<!--footer end here--></div>
+
+	<!--footer end here-->
+
+	<!--script files-->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/jqwidgets/scripts/date-picker.js"></script>
+	<script src="assets/js/isotop/isotope-docs.min.js"></script>
+	<script src="assets/js/select2/select2.js"></script>
+	<script src="assets/js/slick.min.js"></script>
+	<script src="assets/js/parallax/parallax.min.js"></script>
+	<script src="assets/js/scrollreveal.min.js"></script>
+	<script src="assets/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+	<script src="assets/js/custom.js"></script>
+	<script src="assets/js/classie.js"></script>
+	<script src="assets/js/modalEffects.js"></script>
+	<script src="assets/js/modernizr.custom.js"></script>
+
+	<!-- searching dropdown js -->
+	<script src="assets/js/bootstrap-select/dist/js/bootstrap-select.js"></script>
+	<script type="text/javascript" language="javascript" src="webslidemenu/js/webslidemenu.js"></script>
+
+	<!-- this is important for IEs -->
+	<script>var polyfilter_scriptpath = 'assets/js/';</script>
+	<script src="assets/js/cssParser.js"></script>
+	<script src="assets/js/include_footer.js"></script>
+	<script async="" defer="" src="https://platform.twitter.com/widgets.js"></script>
+	<script async="" defer="" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v3.2"></script>
+	<script>includeHTML();</script>
+	<!--end script files-->
+	<script>
+	$(document).ready(function(){
+		$('[data-url]').on('click',function(e){
+			e.preventDefault();
+			window.open($(this).data("url"), '_blank');
+		})
+	})
+	</script>
+
+
+<iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/widget_iframe.2f70fb173b9000da126c79afe2098f02.html?origin=https%3A%2F%2Fwww.ktmb.com.my" title="Twitter settings iframe" style="display: none;"></iframe><iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;" title="Twitter analytics iframe"></iframe></body></html>
