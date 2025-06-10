@@ -1,52 +1,232 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { getRouteByDepartureCode, getStationList } from "../firebase/firebase-related";
 
-function KasehChat() {
+function KasehChat({ onClose }) {
     const bottomRef = useRef(null);
-    const [messages, setMessages] = useState([
-        {
-            type: "bot",
-            content: (
-                <>
-                    Hai! saya <strong>KASEH</strong>. Boleh saya bantu? 🥰
-                    <br />
-                    <em>
-                        Hi! I am <strong>KASEH</strong>, how may I assist you?
-                    </em>
-                    <br />
-                    <br />
-                    <p style={{ fontWeight: "bold", fontSize: "11pt" }}>
-                        Notis Penting / <em>Important Notice</em>
-                    </p>
-                    <img
-                        src="https://ktmbstorage.blob.core.windows.net/ktmb-online-live-file/Announcement/OnlineAnnouncement.jpg?v=638613103309434155"
-                        alt="Important Notice"
-                        className="rounded-lg w-full max-w-xs mx-auto"
-                    />
-                </>
-            ),
-            time: "15:01",
-        },
-        {
-            type: "bot",
-            content: (
-                <>
-                    Sila pilih Bahasa <br />
-                    Please select your language
-                </>
-            ),
-            time: "15:02",
-            options: [
-                {
-                    label: "Bahasa Melayu",
-                    value: "ms",
+    const [messages, setMessages] = useState([]);
+    const [ticketInfo, setTicketInfo] = useState(null);
+    const [restart, setRestart] = useState(false);
+
+    useEffect(() => {
+        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
+
+    useEffect(() => {
+        const time = formatTime(new Date());
+        setMessages([
+            {
+                type: "bot",
+                content: (
+                    <>
+                        Hai! saya <strong>KASEH</strong>. Boleh saya bantu? 🥰
+                        <br />
+                        <em>
+                            Hi! I am <strong>KASEH</strong>, how may I assist you?
+                        </em>
+                    </>
+                ),
+                time,
+                options: [
+                    { label: "Book Ticket", action: startBookingFlow },
+                    { label: "Check Arrival Time", action: handleCheckArrivalTime },
+                ],
+            },
+        ]);
+    }, [restart]);
+
+    useEffect(() => {
+        if (ticketInfo?.from && ticketInfo?.to && ticketInfo?.userType && ticketInfo?.numOfPassengers && ticketInfo?.tripType && ticketInfo?.price) {
+            confirmTicket(ticketInfo);
+        }
+    }, [ticketInfo]);
+
+    const formatTime = (time) =>
+        new Date(time).toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+        });
+
+    const addBotMessage = (content, options = [], back = false) => {
+        if (back) {
+            options.push({
+                label: "Back to main menu",
+                action: () => {
+                    setRestart(!restart);
+                    setTicketInfo(null);
                 },
-                {
-                    label: "English",
-                    value: "en",
+            });
+        }
+
+        setMessages((prev) => [
+            ...prev,
+            {
+                type: "bot",
+                content,
+                time: formatTime(new Date()),
+                options,
+            },
+        ]);
+    };
+
+    const handleCheckArrivalTime = () => {
+        // handle check arrival time
+    };
+
+    const startBookingFlow = () => {
+        queryOrigin();
+    };
+
+    const queryOrigin = async () => {
+        const stations = await getStationList();
+        const options = stations.map((station) => ({
+            label: station.name,
+            action: () => queryDestination(station.code),
+        }));
+        addBotMessage("Please select your departure station", options, true);
+    };
+
+    const queryDestination = async (departureStationCode) => {
+        const routes = await getRouteByDepartureCode(departureStationCode);
+        if (routes.length > 0) {
+            const options = routes.map((route) => ({
+                label: route.to,
+                action: () => {
+                    setTicketInfo({
+                        from: route.from,
+                        fromCode: route.fromCode,
+                        to: route.to,
+                        toCode: route.toCode,
+                        priceMap: route.price,
+                    });
+                    queryTripType(route.isReturnAvailable);
                 },
-            ],
-        },
-    ]);
+            }));
+            addBotMessage("Please select your arrival station", options, true);
+        } else {
+            addBotMessage(
+                "No route available for this departure station",
+                [
+                    {
+                        label: "Back to departure station",
+                        action: queryOrigin,
+                    },
+                ],
+                true
+            );
+        }
+    };
+
+    const queryTripType = async (twoWayAvailable) => {
+        const options = [
+            {
+                label: "one-way",
+                action: () => {
+                    setTicketInfo((prev) => ({ ...prev, tripType: "one-way" }));
+                    queryUserType();
+                },
+            },
+        ];
+        if (twoWayAvailable) {
+            options.push({
+                label: "two-way",
+                action: () => {
+                    setTicketInfo((prev) => ({ ...prev, tripType: "two-way" }));
+                    queryUserType();
+                },
+            });
+        }
+        addBotMessage("Please select your trip type", options, true);
+    };
+
+    const queryUserType = useCallback(() => {
+        const userTypes = ["child", "adult", "senior"];
+        const options = userTypes.map((type) => ({
+            label: type,
+            action: () => {
+                setTicketInfo((prev) => {
+                    const num = prev?.numOfPassengers || 1;
+                    const multiplier = prev?.tripType === "two-way" ? 2 : 1;
+                    return {
+                        ...prev,
+                        userType: type,
+                        price: prev?.priceMap?.[type] * num * multiplier,
+                    };
+                });
+                queryNumofPassenger();
+            },
+        }));
+        addBotMessage("Please select your user type", options, true);
+    }, []);
+
+    const queryNumofPassenger = () => {
+        const options = Array.from({ length: 10 }, (_, i) => i + 1).map((num) => ({
+            label: num,
+            action: () => {
+                setTicketInfo((prev) => {
+                    const multiplier = prev?.tripType === "two-way" ? 2 : 1;
+                    return {
+                        ...prev,
+                        numOfPassengers: num,
+                        price: prev?.priceMap?.[prev?.userType] * num * multiplier,
+                    };
+                });
+            },
+        }));
+        addBotMessage("Please select number of passengers", options, true);
+    };
+
+    const confirmTicket = (info) => {
+        const content = (
+            <>
+                <p>Confirm your ticket details:</p>
+                <p>
+                    <b>Departure Station:</b> {info.from}
+                </p>
+                <p>
+                    <b>Arrival Station:</b> {info.to}
+                </p>
+                <p>
+                    <b>Trip Type:</b> {info.tripType}
+                </p>
+                <p>
+                    <b>Price:</b> RM {info.price}
+                </p>
+                <p>
+                    <b>Number of Passengers:</b> {info.numOfPassengers}
+                </p>
+                <p>
+                    <b>User Type:</b> {info.userType}
+                </p>
+            </>
+        );
+
+        const options = [{ label: "Confirm", action: () => {} }];
+
+        addBotMessage(content, options, true);
+    };
+
+    const handleSendMessage = () => {
+        const input = document.getElementById("message");
+        const content = input.value.trim();
+        if (!content) return;
+
+        const newMessage = {
+            type: "user",
+            content,
+            time: formatTime(new Date()),
+        };
+
+        setMessages((prev) => {
+            const lastBot = prev[prev.length - 1];
+            lastBot?.type === "bot" &&
+                lastBot.options?.length > 0 &&
+                lastBot.options.find((o) => content.toLowerCase().includes(o.label.toLowerCase()))?.action();
+            lastBot.options = [];
+            return [...prev, newMessage];
+        });
+        input.value = "";
+    };
 
     const styles = {
         container: {
@@ -63,7 +243,7 @@ function KasehChat() {
             display: "flex",
             flexDirection: "column",
             overflow: "hidden",
-            border: "1px solidrgb(255, 0, 0)",
+            border: "1px solid rgb(255, 0, 0)",
         },
         header: {
             padding: "11px 11px 11px 25px",
@@ -71,11 +251,6 @@ function KasehChat() {
         avatarText: {
             fontSize: "16px",
             fontWeight: 450,
-        },
-        closeButton: {
-            borderColor: "transparent",
-            padding: 0,
-            margin: 0,
         },
         messagesContainer: {
             backgroundColor: "#f5f5f5",
@@ -100,10 +275,6 @@ function KasehChat() {
             borderBottomRightRadius: "0",
             width: "80%",
             backgroundColor: "#A8B5E0",
-            color: "#fff",
-        },
-        messageTime: {
-            textAlign: "right",
             color: "#fff",
         },
         quickReply: {
@@ -134,20 +305,6 @@ function KasehChat() {
         },
     };
 
-    const handleSendMessage = () => {
-        const newMessage = {
-            type: "user",
-            content: document.getElementById("message").value,
-            time: new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: false }),
-        };
-        setMessages([...messages, newMessage]);
-        document.getElementById("message").value = "";
-    };
-
-    useEffect(() => {
-        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, [messages]);
-
     return (
         <div style={styles.container}>
             {/* Header */}
@@ -156,12 +313,7 @@ function KasehChat() {
                     <img src="assets/img/bg.png" alt="avatar" className="w-10 h-10 rounded-full" />
                     <span style={styles.avatarText}>KASEH</span>
                 </div>
-                <button
-                    onClick={() => {
-                        document.getElementById("root").style.display = "none";
-                    }}
-                    style={styles.closeButton}
-                >
+                <button onClick={onClose} style={styles.iconButton}>
                     <img src="https://www.ktmb.com.my/assets/img/icon-chat-close.svg" alt="close" width="25" />
                 </button>
             </div>
@@ -169,34 +321,56 @@ function KasehChat() {
             {/* Messages */}
             <div style={styles.messagesContainer} className="flex-1 overflow-y-auto">
                 <div style={styles.messageWrapper}>
-                    {messages.map((msg, index) =>
-                        msg.type === "bot" ? (
-                            <>
-                                <div key={index} style={styles.botMessage} className="bg-white rounded-2xl shadow-sm text-sm text-gray-800">
-                                    <div>{msg.content}</div>
-                                    <div className="text-xs text-gray-400 mt-2 pt-2">{msg.time}</div>
-                                </div>
-                                {msg.options && (
-                                    <div style={{ marginTop: "5px" }} className="flex gap-2">
-                                        {msg.options.map((option, index) => (
-                                            <button key={index} style={styles.quickReply}>
-                                                {option.label}
-                                            </button>
-                                        ))}
+                    {messages.map((msg, index) => (
+                        <div key={index}>
+                            {msg.type === "bot" ? (
+                                <div>
+                                    <div style={styles.botMessage} className="bg-white rounded-2xl shadow-sm text-sm text-gray-800">
+                                        <div>{msg.content}</div>
+                                        <div className="text-xs text-gray-400 mt-2 pt-2">{msg.time}</div>
                                     </div>
-                                )}
-                            </>
-                        ) : (
-                            <div className="flex justify-end" key={index}>
-                                <div style={styles.userMessage} className="rounded-2xl shadow-sm text-sm">
-                                    <div style={{ fontSize: "16px" }}>{msg.content}</div>
-                                    <div style={styles.messageTime} className="text-xs mt-2 pt-2">
-                                        {msg.time}
+                                    {msg.options?.length > 0 && (
+                                        <div style={{ marginTop: "5px" }} className="flex gap-2 flex-wrap">
+                                            {msg.options.map((option, idx) => (
+                                                <button
+                                                    key={idx}
+                                                    onClick={() => {
+                                                        // Remove the quick reply from the message
+                                                        setMessages((prev) => {
+                                                            const tempMessages = prev.map((m, i) => {
+                                                                return i === index ? { ...m, options: [] } : m;
+                                                            });
+                                                            tempMessages.push({ type: "user", content: option.label, time: formatTime(new Date()) });
+                                                            return tempMessages;
+                                                        });
+                                                        option.action();
+                                                    }}
+                                                    style={{
+                                                        ...styles.quickReply,
+                                                        ...(option?.selected && {
+                                                            backgroundColor: "#A8B5E0",
+                                                            color: "#fff",
+                                                        }),
+                                                    }}
+                                                >
+                                                    {option.label}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            ) : (
+                                <div className="flex justify-end">
+                                    <div style={styles.userMessage} className="rounded-2xl shadow-sm text-sm">
+                                        <div style={{ fontSize: "16px" }}>{msg.content}</div>
+                                        <div style={styles.messageTime} className="text-xs mt-2 pt-2 flex justify-end">
+                                            {msg.time}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    )}
+                            )}
+                        </div>
+                    ))}
                     <div ref={bottomRef} />
                 </div>
             </div>
@@ -209,11 +383,7 @@ function KasehChat() {
                     style={styles.input}
                     className="flex-1 px-4 text-sm focus:outline-none focus:ring-1 focus:ring-blue-400"
                     placeholder="Write your message here..."
-                    onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                            handleSendMessage();
-                        }
-                    }}
+                    onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
                 />
                 <button onClick={handleSendMessage} style={styles.iconButton}>
                     <img src="https://vpc-nubidesk.nubitel.io:7000/KtmbBot/Content/img/sendBtn.png" alt="send" className="w-6 h-6" />
