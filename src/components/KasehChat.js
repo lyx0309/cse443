@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { getRouteByDepartureCode, getStationList } from "../firebase/firebase-related";
 
-function KasehChat({ onClose }) {
+function KasehChat({ onClose, onNavigateToTrainTime }) { // Accept onNavigateToTrainTime as a prop
     const bottomRef = useRef(null);
     const [messages, setMessages] = useState([]);
     const [ticketInfo, setTicketInfo] = useState(null);
@@ -28,11 +28,11 @@ function KasehChat({ onClose }) {
                 time,
                 options: [
                     { label: "Book Ticket", action: startBookingFlow },
-                    { label: "Check Arrival Time", action: handleCheckArrivalTime },
+                    { label: "Check Arrival Time", action: onNavigateToTrainTime }, // Use the passed prop here
                 ],
             },
         ]);
-    }, [restart]);
+    }, [restart, onNavigateToTrainTime]);
 
     useEffect(() => {
         if (ticketInfo?.from && ticketInfo?.to && ticketInfo?.userType && ticketInfo?.numOfPassengers && ticketInfo?.tripType && ticketInfo?.price) {
@@ -67,10 +67,6 @@ function KasehChat({ onClose }) {
                 options,
             },
         ]);
-    };
-
-    const handleCheckArrivalTime = () => {
-        // handle check arrival time
     };
 
     const startBookingFlow = () => {
@@ -219,10 +215,13 @@ function KasehChat({ onClose }) {
 
         setMessages((prev) => {
             const lastBot = prev[prev.length - 1];
-            lastBot?.type === "bot" &&
-                lastBot.options?.length > 0 &&
-                lastBot.options.find((o) => content.toLowerCase().includes(o.label.toLowerCase()))?.action();
-            lastBot.options = [];
+            if (lastBot?.type === "bot" && lastBot.options?.length > 0) {
+                 const selectedOption = lastBot.options.find((o) => content.toLowerCase().includes(o.label.toLowerCase()));
+                if (selectedOption) {
+                    selectedOption.action();
+                }
+                lastBot.options = [];
+            }
             return [...prev, newMessage];
         });
         input.value = "";
@@ -255,27 +254,27 @@ function KasehChat({ onClose }) {
         messagesContainer: {
             backgroundColor: "#f5f5f5",
             marginTop: "4px",
+            flex: "1",
+            overflowY: "auto",
         },
         messageWrapper: {
-            marginLeft: "40px",
-            marginRight: "40px",
-            marginTop: "10px",
-            paddingBottom: "10px",
+            padding: "10px 20px"
         },
         botMessage: {
             padding: "10px 20px",
             marginTop: "10px",
             borderBottomLeftRadius: "0",
-            width: "80%",
+            width: "fit-content",
+            maxWidth: '80%',
         },
         userMessage: {
-            padding: "5px 20px",
+            padding: "10px 20px",
             marginTop: "10px",
             borderRadius: "25px 25px 0 25px",
-            borderBottomRightRadius: "0",
-            width: "80%",
             backgroundColor: "#A8B5E0",
             color: "#fff",
+            width: "fit-content",
+            maxWidth: '80%',
         },
         quickReply: {
             backgroundColor: "#a5a5a5",
@@ -287,6 +286,7 @@ function KasehChat({ onClose }) {
             fontWeight: 400,
             letterSpacing: "0.2px",
             textDecoration: "none",
+            cursor: "pointer",
         },
         footer: {
             padding: "12px 14px",
@@ -302,6 +302,8 @@ function KasehChat({ onClose }) {
         iconButton: {
             borderColor: "transparent",
             padding: "3px 8px 4px",
+            backgroundColor: "transparent",
+            border: "none",
         },
     };
 
@@ -319,10 +321,10 @@ function KasehChat({ onClose }) {
             </div>
 
             {/* Messages */}
-            <div style={styles.messagesContainer} className="flex-1 overflow-y-auto">
+            <div style={styles.messagesContainer}>
                 <div style={styles.messageWrapper}>
                     {messages.map((msg, index) => (
-                        <div key={index}>
+                        <div key={index} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                             {msg.type === "bot" ? (
                                 <div>
                                     <div style={styles.botMessage} className="bg-white rounded-2xl shadow-sm text-sm text-gray-800">
@@ -335,23 +337,16 @@ function KasehChat({ onClose }) {
                                                 <button
                                                     key={idx}
                                                     onClick={() => {
-                                                        // Remove the quick reply from the message
                                                         setMessages((prev) => {
-                                                            const tempMessages = prev.map((m, i) => {
-                                                                return i === index ? { ...m, options: [] } : m;
-                                                            });
+                                                            const tempMessages = prev.map((m, i) => 
+                                                                i === index ? { ...m, options: [] } : m
+                                                            );
                                                             tempMessages.push({ type: "user", content: option.label, time: formatTime(new Date()) });
                                                             return tempMessages;
                                                         });
                                                         option.action();
                                                     }}
-                                                    style={{
-                                                        ...styles.quickReply,
-                                                        ...(option?.selected && {
-                                                            backgroundColor: "#A8B5E0",
-                                                            color: "#fff",
-                                                        }),
-                                                    }}
+                                                    style={styles.quickReply}
                                                 >
                                                     {option.label}
                                                 </button>
@@ -360,12 +355,10 @@ function KasehChat({ onClose }) {
                                     )}
                                 </div>
                             ) : (
-                                <div className="flex justify-end">
-                                    <div style={styles.userMessage} className="rounded-2xl shadow-sm text-sm">
-                                        <div style={{ fontSize: "16px" }}>{msg.content}</div>
-                                        <div style={styles.messageTime} className="text-xs mt-2 pt-2 flex justify-end">
-                                            {msg.time}
-                                        </div>
+                                <div style={styles.userMessage} className="shadow-sm text-sm">
+                                    <div>{msg.content}</div>
+                                    <div className="text-xs mt-2 pt-2 flex justify-end text-gray-200">
+                                        {msg.time}
                                     </div>
                                 </div>
                             )}
