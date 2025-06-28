@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { getRouteByDepartureCode, getStationList } from "../firebase/firebase-related";
+import { expandTrainTimesByStation, getRouteByDepartureCode, getStationList, insertBookingData } from "../firebase/firebase-related";
+import { generateTicketQRCodesPdf } from "../PDFGenerator";
 
 function KasehChat({ onClose }) {
     const bottomRef = useRef(null);
     const [messages, setMessages] = useState([]);
-    const [ticketInfo, setTicketInfo] = useState(null);
     const [restart, setRestart] = useState(false);
 
     useEffect(() => {
@@ -34,12 +34,6 @@ function KasehChat({ onClose }) {
         ]);
     }, [restart]);
 
-    useEffect(() => {
-        if (ticketInfo?.from && ticketInfo?.to && ticketInfo?.userType && ticketInfo?.numOfPassengers && ticketInfo?.tripType && ticketInfo?.price) {
-            confirmTicket(ticketInfo);
-        }
-    }, [ticketInfo]);
-
     const formatTime = (time) =>
         new Date(time).toLocaleTimeString("en-US", {
             hour: "2-digit",
@@ -53,7 +47,6 @@ function KasehChat({ onClose }) {
                 label: "Back to main menu",
                 action: () => {
                     setRestart(!restart);
-                    setTicketInfo(null);
                 },
             });
         }
@@ -73,137 +66,238 @@ function KasehChat({ onClose }) {
         // handle check arrival time
     };
 
-    const startBookingFlow = () => {
-        queryOrigin();
-    };
+    const steps = [
+        "selectOrigin",
+        "selectDestination",
+        "selectTripType",
+        "selectUserType",
+        "selectNumOfPassengers",
+        "confirmTicket",
+        "payTicket",
+        "generateTicketPdf",
+    ];
+    const [currentStep, setCurrentStep] = useState(0);
 
-    const queryOrigin = async () => {
-        const stations = await getStationList();
-        const options = stations.map((station) => ({
-            label: station.name,
-            action: () => queryDestination(station.code),
-        }));
-        addBotMessage("Please select your departure station", options, true);
-    };
+    const bookingFlow = async (stepIndex = currentStep, data = null) => {
+        const step = steps[stepIndex]; // get the current step
 
-    const queryDestination = async (departureStationCode) => {
-        const routes = await getRouteByDepartureCode(departureStationCode);
-        if (routes.length > 0) {
-            const options = routes.map((route) => ({
-                label: route.to,
-                action: () => {
-                    setTicketInfo({
-                        from: route.from,
-                        fromCode: route.fromCode,
-                        to: route.to,
-                        toCode: route.toCode,
-                        priceMap: route.price,
-                    });
-                    queryTripType(route.isReturnAvailable);
-                },
-            }));
-            addBotMessage("Please select your arrival station", options, true);
-        } else {
-            addBotMessage(
-                "No route available for this departure station",
-                [
+        // handle the current step
+        switch (step) {
+            // Case 1: User selects origin station
+            case "selectOrigin":
+                try {
+                    // Fetch the list of stations then display as options
+                    const stations = await getStationList();
+                    addBotMessage(
+                        "Please select your departure station",
+                        stations.map((station) => ({
+                            label: station.name,
+                            action: () => bookingFlow(stepIndex + 1, { ...data, from: station.name, fromCode: station.code }),
+                        })),
+                        true
+                    );
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                    addBotMessage("⚠️ Failed to load stations. Please try again later.", [], true);
+                }
+                break;
+
+            // Case 2: User selects destination station
+            case "selectDestination":
+                try {
+                    // Fetch the list of routes based on selected originthen display as options
+                    const routes = await getRouteByDepartureCode(data.fromCode);
+
+                    // if no route available
+                    if (routes.length === 0) {
+                        addBotMessage(
+                            "No route available",
+                            [
+                                {
+                                    label: "Back",
+                                    action: () => bookingFlow(0),
+                                },
+                            ],
+                            true
+                        );
+                        return;
+                    }
+
+                    // if route available then display
+                    addBotMessage(
+                        "Please select your arrival station",
+                        routes.map((route) => ({
+                            label: route.to,
+                            action: () =>
+                                bookingFlow(stepIndex + 1, {
+                                    ...data,
+                                    to: route.to,
+                                    toCode: route.toCode,
+                                    priceMap: route.price,
+                                    isReturnAvailable: route.isReturnAvailable,
+                                }),
+                        })),
+                        true
+                    );
+                } catch (error) {
+                    console.error("Failed to fetch routes:", error);
+                    addBotMessage("⚠️ Failed to load routes. Please try again.", [], true);
+                }
+                break;
+
+            // Case 3: User selects trip type (one-way or two-way)
+            case "selectTripType":
+                // define options
+                const options = [
                     {
-                        label: "Back to departure station",
-                        action: queryOrigin,
+                        label: "one-way",
+                        action: () => bookingFlow(stepIndex + 1, { ...data, tripType: "one-way" }),
                     },
-                ],
-                true
-            );
+                ];
+
+                // check if route support two-way
+                if (data.isReturnAvailable) {
+                    options.push({
+                        label: "two-way",
+                        action: () => bookingFlow(stepIndex + 1, { ...data, tripType: "two-way" }),
+                    });
+                }
+
+                // add bot message
+                addBotMessage("Please select your trip type", options, true);
+                break;
+
+            // Case 4: User selects user type (child, adult, senior)
+            case "selectUserType":
+                const userTypes = ["child", "adult", "senior"]; // 3 user types
+                addBotMessage(
+                    "Please select your user type",
+                    userTypes.map((type) => ({
+                        label: type,
+                        action: () => bookingFlow(stepIndex + 1, { ...data, userType: type }),
+                    })),
+                    true
+                );
+                break;
+
+            // Case 5: User selects number of passengers/tickets
+            case "selectNumOfPassengers":
+                addBotMessage(
+                    "Please select number of passengers",
+                    Array.from({ length: 10 }, (_, i) => ({
+                        // options 1 to 10
+                        label: (i + 1).toString(),
+                        action: () => {
+                            const multiplier = data.tripType === "two-way" ? 2 : 1;
+                            const price = data.priceMap?.[data.userType] * (i + 1) * multiplier;
+                            bookingFlow(stepIndex + 1, { ...data, numOfPassengers: i + 1, price });
+                        },
+                    })),
+                    true
+                );
+                break;
+
+            // Case 6: User cofirms the ticket details
+            case "confirmTicket":
+                const content = (
+                    <>
+                        <p>Confirm your ticket details:</p>
+                        <p>
+                            <b>Departure Station:</b> {data.from}
+                        </p>
+                        <p>
+                            <b>Arrival Station:</b> {data.to}
+                        </p>
+                        <p>
+                            <b>Trip Type:</b> {data.tripType}
+                        </p>
+                        <p>
+                            <b>Price:</b> RM {data.price}
+                        </p>
+                        <p>
+                            <b>Number of Passengers:</b> {data.numOfPassengers}
+                        </p>
+                        <p>
+                            <b>User Type:</b> {data.userType}
+                        </p>
+                    </>
+                );
+
+                addBotMessage(
+                    content,
+                    [
+                        {
+                            label: "Confirm",
+                            action: () => {
+                                bookingFlow(stepIndex + 1, data);
+                            },
+                        },
+                    ],
+                    true
+                );
+                break;
+
+            // Case 7: User pays for the ticket
+            case "payTicket":
+                // fake payment qr
+                const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + "https://www.hariwang.com.my/dummy-payment-gateway/";
+                const payContent = (
+                    <div>
+                        Scan to Pay <br />
+                        <img src={qrUrl} />
+                    </div>
+                );
+                addBotMessage(payContent, []);
+
+                // assume payment is successful made by user (using 5 seconds delay)
+                setTimeout(async () => {
+                    bookingFlow(stepIndex + 1, data);
+                }, 5000);
+
+                break;
+
+            // Case 8: User downloads the ticket
+            case "generateTicketPdf":
+                try {
+                    // generate tickets based on number of passengers selected
+                    // pdf and list of ticket ids returned
+                    const { doc, ticketIdArray } = await generateTicketQRCodesPdf(data.numOfPassengers);
+
+                    // insert booking data to firebase
+                    await insertBookingData(data, ticketIdArray);
+
+                    // prepare link to download pdf
+                    const blob = doc.output("blob");
+                    const url = URL.createObjectURL(blob);
+                    const message = (
+                        <div>
+                            Your ticket has been successfully booked!{" "}
+                            <a style={{ cursor: "pointer" }} onClick={() => doc.save("tickets.pdf")}>
+                                Download PDF
+                            </a>
+                        </div>
+                    );
+                    addBotMessage(message, [], true);
+
+                    // direct open pdf on browser
+                    window.open(url);
+                } catch (error) {
+                    console.error("PDF generation or booking failed:", error);
+                    addBotMessage("❌ Failed to generate ticket. Please try again later.", [], true);
+                }
+                break;
+            // Default
+            default:
+                console.error("Invalid stepIndex:", stepIndex);
+                break;
         }
+
+        setCurrentStep(stepIndex);
     };
 
-    const queryTripType = async (twoWayAvailable) => {
-        const options = [
-            {
-                label: "one-way",
-                action: () => {
-                    setTicketInfo((prev) => ({ ...prev, tripType: "one-way" }));
-                    queryUserType();
-                },
-            },
-        ];
-        if (twoWayAvailable) {
-            options.push({
-                label: "two-way",
-                action: () => {
-                    setTicketInfo((prev) => ({ ...prev, tripType: "two-way" }));
-                    queryUserType();
-                },
-            });
-        }
-        addBotMessage("Please select your trip type", options, true);
-    };
-
-    const queryUserType = useCallback(() => {
-        const userTypes = ["child", "adult", "senior"];
-        const options = userTypes.map((type) => ({
-            label: type,
-            action: () => {
-                setTicketInfo((prev) => {
-                    const num = prev?.numOfPassengers || 1;
-                    const multiplier = prev?.tripType === "two-way" ? 2 : 1;
-                    return {
-                        ...prev,
-                        userType: type,
-                        price: prev?.priceMap?.[type] * num * multiplier,
-                    };
-                });
-                queryNumofPassenger();
-            },
-        }));
-        addBotMessage("Please select your user type", options, true);
-    }, []);
-
-    const queryNumofPassenger = () => {
-        const options = Array.from({ length: 10 }, (_, i) => i + 1).map((num) => ({
-            label: num,
-            action: () => {
-                setTicketInfo((prev) => {
-                    const multiplier = prev?.tripType === "two-way" ? 2 : 1;
-                    return {
-                        ...prev,
-                        numOfPassengers: num,
-                        price: prev?.priceMap?.[prev?.userType] * num * multiplier,
-                    };
-                });
-            },
-        }));
-        addBotMessage("Please select number of passengers", options, true);
-    };
-
-    const confirmTicket = (info) => {
-        const content = (
-            <>
-                <p>Confirm your ticket details:</p>
-                <p>
-                    <b>Departure Station:</b> {info.from}
-                </p>
-                <p>
-                    <b>Arrival Station:</b> {info.to}
-                </p>
-                <p>
-                    <b>Trip Type:</b> {info.tripType}
-                </p>
-                <p>
-                    <b>Price:</b> RM {info.price}
-                </p>
-                <p>
-                    <b>Number of Passengers:</b> {info.numOfPassengers}
-                </p>
-                <p>
-                    <b>User Type:</b> {info.userType}
-                </p>
-            </>
-        );
-
-        const options = [{ label: "Confirm", action: () => {} }];
-
-        addBotMessage(content, options, true);
+    const startBookingFlow = () => {
+        setCurrentStep(0);
+        bookingFlow(0);
     };
 
     const handleSendMessage = () => {
