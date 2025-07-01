@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { expandTrainTimesByStation, getRouteByDepartureCode, getStationList, insertBookingData } from "../firebase/firebase-related";
+import { expandTrainTimesByStation, getRouteByDepartureCode, getStationList, getTimetable, insertBookingData } from "../firebase/firebase-related";
 import { generateTicketQRCodesPdf } from "../PDFGenerator";
 
 function KasehChat({ onClose }) {
@@ -28,7 +28,7 @@ function KasehChat({ onClose }) {
                 time,
                 options: [
                     { label: "Book Ticket", action: startBookingFlow },
-                    { label: "Check Arrival Time", action: handleCheckArrivalTime },
+                    { label: "Check Arrival Time", action: startTrainTimeFlow },
                 ],
             },
         ]);
@@ -298,6 +298,139 @@ function KasehChat({ onClose }) {
     const startBookingFlow = () => {
         setCurrentStep(0);
         bookingFlow(0);
+    };
+
+    const startTrainTimeFlow = () => {
+        setCurrentStep(0);
+        trainTimeFlow(0);
+    };
+
+    const trainTimeSteps = ["fetchTimetable", "selectRoute", "selectDeparture", "displayDepartureTime", "selectDestination", "displayArrivalTime"];
+
+    const trainTimeFlow = async (stepIndex = 0, data = {}) => {
+        const step = trainTimeSteps[stepIndex]; // get the current step
+
+        // helper function to move to the next step
+        const next = (nextData = {}) => trainTimeFlow(stepIndex + 1, { ...data, ...nextData });
+
+        // handle the current step
+        switch (step) {
+            // Case 1: Fetch timetable (contains list of routes)
+            case "fetchTimetable": {
+                try {
+                    const timetable = await getTimetable();
+                    if (Array.isArray(timetable) && timetable.length > 0) {
+                        next({ timetable });
+                    } else {
+                        addBotMessage("Sorry, I couldn't fetch the station list. Please try again later.", [], true);
+                    }
+                } catch (error) {
+                    console.error("Error fetching timetable:", error);
+                    addBotMessage("Sorry, I couldn't fetch the station list. Please try again later.", [], true);
+                }
+                break;
+            }
+
+            // Case 2: Select route
+            case "selectRoute": {
+                if (!data.timetable) {
+                    addBotMessage("Sorry, no timetable found.", [], true);
+                    return;
+                }
+
+                const routeOptions = data.timetable.map((route) => ({
+                    label: route.name,
+                    action: () => next({ selectedRoute: route }),
+                }));
+
+                addBotMessage("Please select your route:", routeOptions, true);
+                break;
+            }
+
+            // Case 3: Select departure station from selected route
+            case "selectDeparture": {
+                const route = data.selectedRoute;
+                if (!route) {
+                    addBotMessage("Sorry, no route selected.", [], true);
+                    return;
+                }
+
+                const stationKeys = Object.keys(route).filter((key) => key !== "name" && key !== "stationOrder");
+                const departureOptions = stationKeys.map((station) => ({
+                    label: station,
+                    action: () => next({ from: station }),
+                }));
+
+                addBotMessage("Select your departure station:", departureOptions);
+                break;
+            }
+
+            // Case 4: Display available departure time based on selected route and departure station
+            case "displayDepartureTime": {
+                const trainTimeMap = data.selectedRoute?.[data.from];
+                if (!trainTimeMap) {
+                    addBotMessage("Sorry, no schedule found for the selected station.", [], true);
+                    return;
+                }
+
+                const timeOptions = Object.entries(trainTimeMap).map(([train, time]) => ({
+                    label: time,
+                    action: () => next({ time, trainNo: train }),
+                }));
+
+                addBotMessage(
+                    `Here are the times for ${data.from}. Click on your desired departure time to check the arrival at your destination.`,
+                    timeOptions,
+                    true
+                );
+                break;
+            }
+
+            // Case 5: Select destination station
+            case "selectDestination": {
+                const { stationOrder } = data.selectedRoute || {};
+                if (!stationOrder || !Array.isArray(stationOrder)) {
+                    addBotMessage("Something went wrong. Please try again later.", [], true);
+                    return;
+                }
+
+                const fromIndex = stationOrder.indexOf(data.from);
+                if (fromIndex === -1) {
+                    addBotMessage("Departure station not found", [], true);
+                    return;
+                }
+
+                const destinations = stationOrder.slice(fromIndex + 1);
+                if (destinations.length === 0) {
+                    addBotMessage("No further stations available after your departure.", [], true);
+                    return;
+                }
+
+                const destinationOptions = destinations.map((station) => ({
+                    label: station,
+                    action: () => next({ to: station }),
+                }));
+
+                addBotMessage(`You're departing from ${data.from}. Now, where are you heading?`, destinationOptions, true);
+                break;
+            }
+
+            // Case 6: Display arrival time
+            case "displayArrivalTime": {
+                const arrivalTime = data.selectedRoute?.[data.to]?.[data.trainNo];
+                if (arrivalTime) {
+                    addBotMessage(`The arrival time at your destination is: ${arrivalTime}`, [], true);
+                } else {
+                    addBotMessage("Sorry, we couldn't find the arrival time for your selection.", [], true);
+                }
+                break;
+            }
+
+            // Default case
+            default:
+                addBotMessage("Unknown step in flow. Please try again.", [], true);
+                break;
+        }
     };
 
     const handleSendMessage = () => {
