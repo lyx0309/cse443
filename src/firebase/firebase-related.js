@@ -68,7 +68,7 @@ function minutesToHHMM(minutes) {
 }
 
 export async function expandTrainTimesByStation() {
-    const docRef = doc(db, "Timetable", "2JE6x7KbqTMrfbUEwYLB"); // adjust collection name
+    const docRef = doc(db, "Timetable", "we5uJ1lcaE0hWTCyyrTG"); // adjust collection name
     const snap = await getDoc(docRef);
     if (!snap.exists()) {
         console.error("Document not found");
@@ -76,7 +76,7 @@ export async function expandTrainTimesByStation() {
     }
 
     const fullData = snap.data();
-    const baseField = "Padang Besar";
+    const baseField = "Butterworth";
     const trainMap = fullData[baseField];
 
     if (!trainMap) {
@@ -86,21 +86,22 @@ export async function expandTrainTimesByStation() {
 
     // Known station times for train 2941
     const stationSchedule2941 = {
-        "Bukit Ketri": "05:32",
-        Arau: "05:39",
-        Kodiang: "05:45",
-        "Anak Bukit": "05:58",
-        "Alor Setar": "06:03",
-        Kobah: "06:14",
-        Gurun: "06:24",
-        "Sungai Petani": "06:37",
-        "Tasek Gelugor": "06:48",
-        "Bukit Mertajam": "07:00",
-        "Bukit Tengah": "07:04",
-        Butterworth: "07:11",
+        "Bukit Tengah": "05:27",
+        "Bukit Mertajam": "05:31",
+        "Tasek Gelugor": "05:43",
+        "Sungai Petani": "05:54",
+        Gurun: "06:07",
+        Kobah: "06:17",
+        "Alor Setar": "06:28",
+        "Anak Bukit": "06:33",
+        Kodiang: "06:46",
+        Arau: "06:52",
+
+        "Bukit Ketri": "06:59",
+        "Padang Besar": "07:11",
     };
 
-    const baseTrainNo = "2941";
+    const baseTrainNo = "2940";
     const baseTime = trainMap[baseTrainNo];
     const baseMinutes = parseTimeToMinutes(baseTime);
 
@@ -123,7 +124,7 @@ export async function expandTrainTimesByStation() {
 
     // Add all new station fields and re-include Padang Besar
     const updatePayload = {
-        "Padang Besar": trainMap,
+        Butterworth: trainMap,
         ...newStationMaps,
     };
 
@@ -145,6 +146,28 @@ export async function insertBookingData(bookingData, bookingIdArr) {
         }
     } catch (error) {
         console.error("Error inserting data:", error);
+        throw error;
+    }
+}
+
+export async function getTimetable() {
+    try {
+        const timeTableCollection = collection(db, "Timetable");
+
+        const querySnapshot = await getDocs(timeTableCollection);
+
+        if (querySnapshot.empty) {
+            console.log("Timetable collection is empty.");
+            return [];
+        }
+
+        const data = querySnapshot.docs.map((doc) => {
+            return doc.data();
+        });
+
+        return data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
         throw error;
     }
 }
